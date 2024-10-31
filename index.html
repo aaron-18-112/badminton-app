@@ -1,8 +1,10 @@
 <!DOCTYPE html> <!-- Declares the document type and tells the browser to read the page as HTML5 -->
+
 <html lang="en"> <!-- Specifies english as a language -->
+
 <head> <!-- Contains metadata, links to external resources and styles that aren't directly displayed on the page -->
     <link href="https://fonts.googleapis.com" rel="preconnect"> <!-- <link> imports fonts from Google -->
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <!-- crossorigin defines how a browser should handle the request. Anonymous allows it to be fetched without sending credentials.
     Use Credentials forces a cookie or HTTP authentication. -->
     <!-- preconnect allows for faster loading by pre connecting to the Google servers -->
@@ -11,82 +13,26 @@
           rel="stylesheet">
     <!-- Loads the fonts with specified qualities with the stylesheet -->
     <meta charset="UTF-8"> <!-- Character encoding is UTF-8 which supports most languages and symbols -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Ensures the webpage displays correctly on various devices by setting the viewport to the device width -->
     <title>AJB Shuttlebell</title> <!-- Defines the page title in the browser tab -->
-    <style>
-        /* Style block contains CSS styles for different HTML elements */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        /* Body styling sets default font, removes any margins and adds padding for spacing */
-        .svg-container {
-            display: flex; /* makes the container a flexbox for central alignment */
-
-            align-content: center;
-            justify-content: center;
-            /* Centres content within the container */
-
-            width: 150px; /* Sets the width of the container */
-            border: 2px; /* Adds a border around the container */
-            padding: 10px; /* Adds padding inside the container */
-            border-radius: 10px; /* Rounds the corners of the container */
-            overflow: hidden; /* Ensures content doesn't spill out if it exceeds the container boundaries */
-            margin-bottom: 20px; /* Adds space below the SVG container */
-        }
-        .svg-container svg,
-        .svg-container img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Makes the SVG responsive, and auto adjusts size based on the containers width */
-
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Creates a flex container for the buttons, stacks them vertically, and adds spacing between the buttons */
-
-        button {
-            width: 173px;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-family: 'Ubuntu', sans-serif;
-            cursor: pointer;
-            background-color: #f0f0f0;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        /* Button styling */
-
-        button:hover {
-            background-color: #d50032;
-            color: white;
-        }
-
-        /* Adds styling when someone hovers over the button */
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-
 
 <body>  <!-- The main content container for visual page elements -->
 <div class="svg-container"> <!-- DIVision groups items together. It helps create containers within a webpage.
  Makes it easier to apply CSS styling or other attributes to the entire div. Allows for flexible layouts-->
     <img alt="Logo" src="logo-SVG.svg"> <!-- Contains an image element meant to hold a logo -->
 </div>
+
 <div class="button-container">
-    <button aria-label="Numbers" id="numbers">Numbers</button> <!-- aria-label helps readers on screen identify each button function -->
-    <button aria-label="Payment" id="payment">Payment</button> <!-- id makes the buttons easier to target in javascript or css-->
+    <button aria-label="Numbers" id="numbers">Numbers</button>
+    <!-- aria-label helps readers on screen identify each button function -->
+    <button aria-label="Payment" id="payment">Payment</button>
+    <!-- id makes the buttons easier to target in javascript or css-->
     <button aria-label="Admin" id="admin">Admin</button>
 </div>
+
 </body>
+
 </html>
