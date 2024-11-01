@@ -1,5 +1,3 @@
-import React from 'react';
-import '/Users/hhaide/RiderProjects/badminton-app/vite-badminton-app/src/assets/logo-SVG.svg';
 import logo from '/logo-SVG.svg';
 
 export default function Home() {
