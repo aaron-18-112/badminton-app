@@ -1,3 +1,7 @@
+<script>
+    //For any JavaScript Logic
+</script>
+
 <link href="./AJB-Icon.svg" rel="icon" type="image/svg+xml"/>
 <header class="svg-container">
     <img alt="Logo" src="./logo-SVG.svg">
