@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <div>
             <header className="svg-container">
-                <Image alt="Logo" src="logo-SVG.svg" width={100} height={100} />
+                <Image alt="Logo" src="logo-SVG.svg" width={100} height={100}/>
             </header>
 
             <nav className="button-container" aria-label="Main Navigation">
@@ -15,8 +15,7 @@ export default function Home() {
             </nav>
 
 
-            <main id="main-content" role="main">
-            </main>
+            <main id="main-content" role="main"></main>
         </div>
     );
 }

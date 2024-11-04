@@ -1,8 +1,8 @@
 <template>
   <div>
-    <link href="./AJB-Icon.svg" rel="icon" type="image/svg+xml" />
+    <link href="./AJB-Icon.svg" rel="icon" type="image/svg+xml"/>
     <header class="svg-container">
-      <img alt="Logo" src="/logo-SVG.svg" />
+      <img alt="Logo" src="/logo-SVG.svg"/>
     </header>
 
     <nav class="button-container">
