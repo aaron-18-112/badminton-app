@@ -5,12 +5,19 @@ body {
     padding: 20px;
 }
 
+.home-root {
+    display: flex;
+    width: 100%;
+}
+
 .svg-container {
     display: flex;
-
+    float: left;
+    flex-direction: column;
     align-content: center;
     justify-content: center;
-    width: 150px;
+    align-items: center;
+    width: auto;
     border: 2px;
     padding: 10px;
     border-radius: 10px;
@@ -20,13 +27,18 @@ body {
 
 .svg-container svg,
 .svg-container img {
-    width: 100%;
+    align-content: center;
+    align-items: center;
     height: auto;
+    margin-bottom: 20px;
 }
 
 .button-container {
     display: flex;
     flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: auto;
     gap: 10px;
 }
 
