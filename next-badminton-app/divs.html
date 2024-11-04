@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Layout with Sidebar</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .page {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .content-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .content1 {
+            background-color: #FF5733;
+            padding: 20px;
+            color: white;
+        }
+
+        .content2 {
+            background-color: #33FF57;
+            padding: 20px;
+            color: white;
+        }
+
+        .content3 {
+            background-color: #3357FF;
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <div class="sidebar">
+        Sidebar Content
+    </div>
+
+
+    <div class="content-container">
+        <div class="content1">Content 1</div>
+        <div class="content2">Content 2</div>
+        <div class="content3">Content 3</div>
+    </div>
+</div>
+
+</body>
+</html>
