@@ -97,6 +97,11 @@ thead {
     border-collapse: separate;
 }
 
+table th:last-child,
+table td:last-child {
+    text-align: center;
+}
+
 th {
     display: table-cell;
     text-align: center;

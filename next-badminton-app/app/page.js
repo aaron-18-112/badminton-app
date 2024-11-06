@@ -3,6 +3,7 @@
 import './globals.css';
 import {useEffect, useState} from "react";
 import {HamburgerMenu} from "@/app/components/hamburger-menu";
+import {Accordion} from "@/app/components/join-accordion"
 
 export default function Home() {
 
@@ -47,13 +48,13 @@ export default function Home() {
                     <p>Next Badminton Session: {formattedDate}, {formattedTime}</p>
                     <p>Total Number of Players: XXX</p>
                 </section>
-                <button className='join' id='join'>Join</button>
+                <Accordion/>
                 <section className="content3">
 
-                    <table>
+                    <table style={{width: "100%"}}>
                         <thead>
                         <tr>
-                            <th>Name</th>
+                            <th style={{width:"80%"}}>Name</th>
                             <th>Remove</th>
                         </tr>
                         </thead>
