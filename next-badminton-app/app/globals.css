@@ -69,7 +69,8 @@ button:hover {
     vertical-align: middle;
 }
 
-.join {
+.join,
+#submit{
     background-color: #d50032;
     color: white;
     font-weight: bold;
@@ -95,6 +96,11 @@ thead {
     vertical-align: middle;
     border-color: inherit;
     border-collapse: separate;
+}
+
+table th:last-child,
+table td:last-child {
+    text-align: center;
 }
 
 th {
@@ -132,6 +138,10 @@ tbody:first-child tr:first-child td:first-child {
 thead:last-child tr:last-child th:first-child,
 tbody:last-child tr:last-child td:first-child {
     border-radius: 0 0 0 4px;
+}
+
+form {
+    width: 100%;
 }
 
 @media (orientation: landscape) {
@@ -249,7 +259,7 @@ tbody:last-child tr:last-child td:first-child {
         height: 50px;
     }
 
-    #join {
+    #join #submit {
         height: 50px;
     }
 
