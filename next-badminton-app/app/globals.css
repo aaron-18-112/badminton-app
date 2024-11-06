@@ -19,6 +19,14 @@
         min-width: 200px;
     }
 
+    .hamburger-menu {
+        display: none;
+    }
+
+    .icon {
+        display: none;
+    }
+
     .content-container {
         flex-grow: 1;
         display: flex;
@@ -56,6 +64,8 @@
         border: none;
         border-radius: 5px;
         transition: background-color 0.3s;
+        vertical-align: middle;
+
     }
 
     button:hover {
@@ -73,23 +83,72 @@
         border-bottom: 2px black solid;
         min-height: 100px;
         white-space: normal;
+        font-size: large;
+        text-align: center;
+        vertical-align: middle;
     }
 
-    .content2 {
+    .join {
         background-color: #d50032;
         padding: 20px;
         color: white;
+        font-weight: bold;
+        vertical-align: middle;
     }
 
     .content3 {
-        background-color: #3357FF;
-        padding: 20px;
-        color: white;
+        color: black;
     }
 
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
+    table {
+        border: 1px solid #ddd;
+        border-collapse: separate;
+        border-left: 0;
+        border-radius: 4px;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+        border-collapse: separate;
+    }
+
+    th {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px 4px 6px 4px;
+        border-left: 1px solid #ddd;
+        background-color: #f0f0f0;
+        font-weight: normal;
+    }
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+
+    td {
+        padding: 5px 4px 6px 4px;
+        text-align: left;
+        vertical-align: top;
+        border-left: 1px solid #ddd;
+    }
+
+    td {
+        border-top: 1px solid #ddd;
+    }
+
+    thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
+        border-radius: 4px 0 0 0;
+    }
+
+    thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
+        border-radius: 0 0 0 4px;
     }
 
 }
@@ -101,11 +160,45 @@
     }
 
     .sidebar {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
         color: white;
         padding: 10px;
         width: 100vw;
         min-width: 200px;
         align-content: center;
+        transition: transofrm 0.3s ease;
+        transform: translateX(-100%);
+        max-height: 100%;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+
+    .sidebar.open {
+        display: block;
+        transform: translateX(0);
+        max-height: 100vh;
+    }
+
+    .icon {
+        position: absolute;
+        display: block;
+        width: 10px;
+        top: 20px;
+        right: 20px;
+        color: black;
+        cursor: pointer;
+    }
+
+    .page.menu-open .content-container {
+        margin-top: 250px;
     }
 
     .content-container {
@@ -127,14 +220,14 @@
 
     .button-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 10px;
     }
 
 
-    button {
+    #numbers, #payment, #admin {
         width: 100%;
         height: 50px;
         padding: 10px 20px;
@@ -146,11 +239,36 @@
         border: none;
         border-radius: 5px;
         transition: background-color 0.3s;
+        vertical-align: middle;
     }
 
-    button:hover {
+    #join {
+        width: 100%;
+        height: 50px;
+        padding: 10px 20px;
+        font-size: 20px;
+        font-family: 'Ubuntu', sans-serif;
+        cursor: pointer;
         background-color: #d50032;
         color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        vertical-align: middle;
+    }
+
+    #numbers, #payment, #admin, #join:hover {
+        background-color: #d50032;
+        color: white;
+    }
+
+    #menu-button {
+        width: 30px;
+        height: 30px;
+        align-items: center;
+        vertical-align: middle;
+        background: none;
+        border: none;
     }
 
     .content1 {
@@ -164,21 +282,71 @@
         min-height: 100px;
         font-family: 'Ubuntu', sans-serif;
         white-space: normal;
+        font-size: large;
+        text-align: center;
+        vertical-align: middle;
     }
 
-    .content2 {
+    .join {
         background-color: #d50032;
         padding: 20px;
         color: white;
+        font-weight: bold;
+        vertical-align: middle;
     }
 
     .content3 {
-        background-color: #3357FF;
-        padding: 20px;
-        color: white;
+        color: black;
     }
 
-    table, th, td {
-        border: 1px solid black;
+    table {
+        border: 1px solid #ddd;
+        border-collapse: separate;
+        border-left: 0;
+        border-radius: 4px;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+        border-collapse: separate;
+    }
+
+    th {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px 4px 6px 4px;
+        border-left: 1px solid #ddd;
+        background-color: #f0f0f0;
+        font-weight: normal;
+    }
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+
+    td {
+        padding: 5px 4px 6px 4px;
+        text-align: left;
+        vertical-align: top;
+        border-left: 1px solid #ddd;
+    }
+
+    td {
+        border-top: 1px solid #ddd;
+    }
+
+    thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
+        border-radius: 4px 0 0 0;
+    }
+
+    thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
+        border-radius: 0 0 0 4px;
     }
 }

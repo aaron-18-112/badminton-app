@@ -2,12 +2,13 @@
 
 import './globals.css';
 import {useEffect, useState} from "react";
+import {HamburgerMenu} from "@/app/components/hamburger-menu";
 
 export default function Home() {
 
     const [date, setDate] = useState(null);
     useEffect(() => {
-        const d = new Date(2024, 10, 12);
+        const d = new Date(2024, 10, 12, 17, 0);
         setDate(d);
     }, []);
 
@@ -15,8 +16,15 @@ export default function Home() {
         ? date.toLocaleDateString('en-GB', {day: '2-digit', month: '2-digit', year: '2-digit'})
         : 'Loading...';
 
+
+    const formattedTime = date
+        ? `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`
+        : '';
+
     return (
         <div className="page">
+
+            <HamburgerMenu/>
 
             <div className="sidebar">
 
@@ -33,31 +41,47 @@ export default function Home() {
 
             <div className="content-container">
                 <section className="content1">
-                    <h4>Next Badminton Session: {formattedDate}</h4>
-                    <h4>Total Number of Players: XXX</h4>
+                    <p>Next Badminton Session: {formattedDate}, {formattedTime}</p>
+                    <p>Total Number of Players: XXX</p>
                 </section>
-                <button className="content2">Join</button>
+                <button className='join' id='join'>Join</button>
                 <section className="content3">
 
-                <table>
-                    <thead>
-                        <th>Name</th>
-                        <th>Remove</th>
-                    </thead>
-                    <tr>
-                        <td>Name</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Name 2</td>
-                        <td></td>
-                    </tr>
-                </table>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>xxx</td>
+                            <td>xxx</td>
+                        </tr>
+                        <tr>
+                            <td>xxx</td>
+                            <td>xxx</td>
+                        </tr>
+                        <tr>
+                            <td>xxx</td>
+                            <td>xxx</td>
+                        </tr>
+                        <tr>
+                            <td>xxx</td>
+                            <td>xxx</td>
+                        </tr>
+                        <tr>
+                            <td>xxx</td>
+                            <td>xxx</td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-            </section>
+                </section>
+            </div>
+
         </div>
-
-</div>
-)
-    ;
+    )
+        ;
 }
