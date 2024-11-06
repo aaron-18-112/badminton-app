@@ -22,6 +22,7 @@ export default function RootLayout({children}) {
         <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <link href="./AJB-Icon.svg" rel="icon" type="image/svg+xml"/>
         </body>
         </html>
     );
