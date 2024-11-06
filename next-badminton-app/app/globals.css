@@ -5,6 +5,14 @@
     font-family: Ubuntu, sans-serif;
 }
 
+.black-text {
+    color: black;
+}
+
+.red-text {
+    color: #df0032;
+}
+
 .page {
     min-height: 100vh;
 }
@@ -60,11 +68,12 @@ button:hover {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    color: black;
+    color: #df0032;
+    font-weight: bold;
     border-bottom: 2px black solid;
     min-height: 100px;
     white-space: normal;
-    font-size: large;
+    font-size: 1.3em;
     text-align: center;
     vertical-align: middle;
 }
@@ -111,7 +120,8 @@ th {
     padding: 5px 4px 6px 4px;
     border-left: 1px solid #ddd;
     background-color: #f0f0f0;
-    font-weight: normal;
+    font-weight: bold;
+    font-size: 1.1em
 }
 
 tr {
@@ -121,15 +131,13 @@ tr {
 }
 
 td {
-    padding: 5px 4px 6px 4px;
+    padding: 10px;
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
     border-left: 1px solid #ddd;
-}
-
-td {
     border-top: 1px solid #ddd;
 }
+
 
 thead:first-child tr:first-child th:first-child,
 tbody:first-child tr:first-child td:first-child {
@@ -193,6 +201,39 @@ tbody:last-child tr:last-child td:first-child {
     border-color: #666;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+#remove-button {
+    height: 30px;
+    font-size: 1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.1s ease, border-color 0.1s ease;
+}
+
+#remove-button:hover {
+    background-color: transparent;
+    border: solid 2px #d50032;
+    transition: background-color 0.1s ease-in, border 0.1s ease-in;
+}
+
+.bin-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+    fill: #333;
+}
+
+#remove-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.5);
+}
+
 
 @media (orientation: landscape) {
     .page {
