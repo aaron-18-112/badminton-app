@@ -1,63 +1,174 @@
-html,
-body {
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    font-family: Ubuntu, sans-serif;
 }
 
-.home-root {
-    display: flex;
-    width: 100%;
+@media (orientation: landscape) {
+
+    .page {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        color: white;
+        padding: 10px;
+        width: 15vw;
+        min-width: 200px;
+    }
+
+    .content-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        min-height: 100vh;
+        width: 80vw;
+        border-left: 2px solid lightgrey;
+    }
+
+    .svg-container {
+        display: flex;
+        width: 100%;
+        max-height: 100px;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+
+    button {
+        width: 100%;
+        height: 75px;
+        padding: 10px 20px;
+        font-size: 20px;
+        font-family: 'Ubuntu', sans-serif;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #d50032;
+        color: white;
+    }
+
+    .content1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: black;
+        border-bottom: 2px black solid;
+        min-height: 100px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .content2 {
+        background-color: #d50032;
+        padding: 20px;
+        color: white;
+    }
+
+    .content3 {
+        background-color: #3357FF;
+        padding: 20px;
+        color: white;
+    }
 }
 
-.svg-container {
-    display: flex;
-    float: left;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    border: 2px;
-    padding: 10px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
+@media (orientation: portrait) {
+    .page {
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        color: white;
+        padding: 10px;
+        width: 100vw;
+        min-width: 200px;
+        align-content: center;
+    }
+
+    .content-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .svg-container {
+        display: flex;
+        max-height: 75px;
+        width: 100%;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+
+    button {
+        width: 100%;
+        height: 50px;
+        padding: 10px 20px;
+        font-size: 20px;
+        font-family: 'Ubuntu', sans-serif;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #d50032;
+        color: white;
+    }
+
+    .content1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: black;
+        border-bottom: 2px black solid;
+        min-height: 100px;
+        font-family: 'Ubuntu', sans-serif;
+        white-space: normal;
+    }
+
+    .content2 {
+        background-color: #d50032;
+        padding: 20px;
+        color: white;
+    }
+
+    .content3 {
+        background-color: #3357FF;
+        padding: 20px;
+        color: white;
+    }
 }
-
-.svg-container svg,
-.svg-container img {
-    align-content: center;
-    align-items: center;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    width: auto;
-    gap: 10px;
-}
-
-button {
-    width: 173px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-family: 'Ubuntu', sans-serif;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #d50032;
-    color: white;
-}
-
-
