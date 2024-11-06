@@ -40,10 +40,10 @@ export default function Home() {
                 <section className="content3">
 
                 <table>
-                    <tr>
+                    <thead>
                         <th>Name</th>
                         <th>Remove</th>
-                    </tr>
+                    </thead>
                     <tr>
                         <td>Name</td>
                         <td></td>
