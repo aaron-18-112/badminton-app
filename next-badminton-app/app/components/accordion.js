@@ -33,7 +33,7 @@ export function Accordion() {
                         <label htmlFor="email">Email Address:</label><br/>
                         <input type="text" id="email" name="email"/><br/>
 
-                        <input type="submit" value="Submit"/>
+                        <input type="submit" id='submit' value="Submit"/>
                     </form>
                 </div>
             )}

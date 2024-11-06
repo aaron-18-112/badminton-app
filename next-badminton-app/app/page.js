@@ -3,7 +3,7 @@
 import './globals.css';
 import {useEffect, useState} from "react";
 import {HamburgerMenu} from "@/app/components/hamburger-menu";
-import {Accordion} from "@/app/components/join-accordion"
+import {Accordion} from "@/app/components/accordion"
 
 export default function Home() {
 
