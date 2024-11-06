@@ -73,6 +73,7 @@
         border-bottom: 2px black solid;
         min-height: 100px;
         font-family: 'Ubuntu', sans-serif;
+        white-space: normal;
     }
 
     .content2 {

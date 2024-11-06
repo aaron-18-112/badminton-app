@@ -37,10 +37,27 @@ export default function Home() {
                     <h4>Total Number of Players: XXX</h4>
                 </section>
                 <button className="content2">Join</button>
-                <div className="content3">Content 3</div>
-            </div>
+                <section className="content3">
 
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Remove</th>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Name 2</td>
+                        <td></td>
+                    </tr>
+                </table>
+
+            </section>
         </div>
-    )
-        ;
+
+</div>
+)
+    ;
 }
