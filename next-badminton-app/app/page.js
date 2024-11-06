@@ -1,9 +1,9 @@
 "use client";
 
 import './globals.css';
-import { useEffect, useState } from "react";
-import { HamburgerMenu } from "@/app/components/hamburger-menu";
-import { Accordion } from "@/app/components/accordion";
+import {useEffect, useState} from "react";
+import {HamburgerMenu} from "@/app/components/hamburger-menu";
+import {Accordion} from "@/app/components/accordion";
 
 export default function Home() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Home() {
     }, []);
 
     const formattedDate = date
-        ? date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' })
+        ? date.toLocaleDateString('en-GB', {day: '2-digit', month: '2-digit', year: '2-digit'})
         : 'Loading...';
 
     const formattedTime = date
@@ -28,7 +28,7 @@ export default function Home() {
     };
 
     const addRow = (fullName) => {
-        setRows((prevRows) => [...prevRows, { name: fullName }]);
+        setRows((prevRows) => [...prevRows, {name: fullName}]);
     };
 
     const handleRemoveRow = (index) => {
@@ -39,14 +39,14 @@ export default function Home() {
     return (
         <div className="page">
             <div className="sidebar">
-                <img className="svg-container" alt="Logo" src="logo-SVG.svg" />
+                <img className="svg-container" alt="Logo" src="logo-SVG.svg"/>
                 <nav className="button-container">
                     <button aria-label="Numbers" id="numbers">Numbers</button>
                     <button aria-label="Payment" id="payment">Payment</button>
                     <button aria-label="Admin" id="admin">Admin</button>
                 </nav>
             </div>
-            <HamburgerMenu toggleMenu={toggleMenu} menuOpen={menuOpen} />
+            <HamburgerMenu toggleMenu={toggleMenu} menuOpen={menuOpen}/>
             <div className={`content-container ${menuOpen ? 'menu-open' : ''}`}>
                 <section className="content1">
                     <p>
@@ -60,13 +60,13 @@ export default function Home() {
                     </p>
                 </section>
 
-                <Accordion addRow={addRow} />
+                <Accordion addRow={addRow}/>
 
                 <section className="content3">
-                    <table style={{ width: "100%" }}>
+                    <table style={{width: "100%"}}>
                         <thead>
                         <tr>
-                            <th style={{ width: "80%" }}>Name</th>
+                            <th style={{width: "80%"}}>Name</th>
                             <th>Remove</th>
                         </tr>
                         </thead>
@@ -80,7 +80,7 @@ export default function Home() {
                                         onClick={() => handleRemoveRow(index)}
                                         aria-label={`Remove ${row.name}`}
                                     >
-                                        <img className="bin-icon" alt="Remove" src="bin-icon.svg" />
+                                        <img className="bin-icon" alt="Remove" src="bin-icon.svg"/>
                                     </button>
                                 </td>
                             </tr>
