@@ -10,7 +10,10 @@ export function HamburgerMenu({toggleMenu, menuOpen}) {
             {/* Hamburger icon */}
             <img className="svg-container" alt="Logo" src="logo-SVG.svg"/>
             <button className="icon" id="menu-button" onClick={toggleMenu} aria-label="Toggle Menu">
-                <img alt='Menu' src="hamburger-icon.svg"/>
+                <img
+                    alt={menuOpen ? 'Close Menu' : 'Open Menu'}
+                    src={menuOpen ? "close-icon.svg" : "hamburger-icon.svg"}
+                />
             </button>
 
             {/* Sidebar */}

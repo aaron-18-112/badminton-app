@@ -222,6 +222,7 @@ tbody:last-child tr:last-child td:first-child {
         border-radius: 0;
         padding: 0;
         z-index: 1000;
+        transition: 0.1s ease-in-out;
     }
 
     .svg-container {
@@ -237,6 +238,8 @@ tbody:last-child tr:last-child td:first-child {
         flex-direction: column;
         gap: 10px;
         flex-wrap: wrap;
+        background-color: white;
+        transition: 0.1s ease-in;
     }
 
 
