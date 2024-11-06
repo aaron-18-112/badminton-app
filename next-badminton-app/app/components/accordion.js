@@ -24,16 +24,16 @@ export function Accordion() {
             {isOpen && (
                 <div className="accordion-content">
                     <form>
-                        <label htmlFor="fname">First Name:</label><br/>
-                        <input type="text" id="fname" name="fname"/><br/>
+                            <label htmlFor="fname">First Name:</label><br/>
+                            <input type="text" id="fname" name="fname"/><br/>
 
-                        <label htmlFor="lname">Last Name:</label><br/>
-                        <input type="text" id="lname" name="lname"/><br/>
+                            <label htmlFor="lname">Last Name:</label><br/>
+                            <input type="text" id="lname" name="lname"/><br/>
 
-                        <label htmlFor="email">Email Address:</label><br/>
-                        <input type="text" id="email" name="email"/><br/>
+                            <label htmlFor="email">Email Address:</label><br/>
+                            <input type="email" id="email" name="email"/><br/>
 
-                        <input type="submit" id='submit' value="Submit"/>
+                            <input type="submit" id='submit' value="Submit"/>
                     </form>
                 </div>
             )}
