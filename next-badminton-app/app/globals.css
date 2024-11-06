@@ -5,152 +5,164 @@
     font-family: Ubuntu, sans-serif;
 }
 
-@media (orientation: landscape) {
+.page {
+    min-height: 100vh;
+}
 
+.content-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    transition: margin-top 0.1s ease-in;
+}
+
+.content-container.menu-open {
+    margin-top: 180px;
+}
+
+.svg-container {
+    display: flex;
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    vertical-align: middle;
+    height: 75px;
+}
+
+button:hover {
+    background-color: #d50032;
+    color: white;
+}
+
+.content1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: black;
+    border-bottom: 2px black solid;
+    min-height: 100px;
+    white-space: normal;
+    font-size: large;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.join {
+    background-color: #d50032;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+    height: 50px;
+}
+
+.content3 {
+    color: black;
+}
+
+table {
+    border: 1px solid #ddd;
+    border-collapse: separate;
+    border-left: 0;
+    border-radius: 4px;
+    border-spacing: 0;
+    width: 100%;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    border-collapse: separate;
+}
+
+th {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 4px 6px 4px;
+    border-left: 1px solid #ddd;
+    background-color: #f0f0f0;
+    font-weight: normal;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+td {
+    padding: 5px 4px 6px 4px;
+    text-align: left;
+    vertical-align: top;
+    border-left: 1px solid #ddd;
+}
+
+td {
+    border-top: 1px solid #ddd;
+}
+
+thead:first-child tr:first-child th:first-child,
+tbody:first-child tr:first-child td:first-child {
+    border-radius: 4px 0 0 0;
+}
+
+thead:last-child tr:last-child th:first-child,
+tbody:last-child tr:last-child td:first-child {
+    border-radius: 0 0 0 4px;
+}
+
+@media (orientation: landscape) {
     .page {
         display: flex;
-        min-height: 100vh;
     }
 
     .sidebar {
         color: white;
         padding: 10px;
-        width: 15vw;
         min-width: 200px;
-    }
-
-    .hamburger-menu {
-        display: none;
-    }
-
-    .icon {
-        display: none;
+        width: 15vw;
     }
 
     .content-container {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        min-height: 100vh;
         width: 80vw;
         border-left: 2px solid lightgrey;
     }
 
     .svg-container {
-        display: flex;
-        width: 100%;
         max-height: 100px;
     }
 
     .button-container {
-        display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
     }
 
-
-    button {
-        width: 100%;
-        height: 75px;
-        padding: 10px 20px;
-        font-size: 20px;
-        font-family: 'Ubuntu', sans-serif;
-        cursor: pointer;
-        background-color: #f0f0f0;
-        color: black;
-        border: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        vertical-align: middle;
-
+    .hamburger-menu,
+    .icon {
+        display: none;
     }
-
-    button:hover {
-        background-color: #d50032;
-        color: white;
-    }
-
-    .content1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        color: black;
-        border-bottom: 2px black solid;
-        min-height: 100px;
-        white-space: normal;
-        font-size: large;
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    .join {
-        background-color: #d50032;
-        padding: 20px;
-        color: white;
-        font-weight: bold;
-        vertical-align: middle;
-    }
-
-    .content3 {
-        color: black;
-    }
-
-    table {
-        border: 1px solid #ddd;
-        border-collapse: separate;
-        border-left: 0;
-        border-radius: 4px;
-        border-spacing: 0;
-        width: 100%;
-    }
-
-    thead {
-        display: table-header-group;
-        vertical-align: middle;
-        border-color: inherit;
-        border-collapse: separate;
-    }
-
-    th {
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-        padding: 5px 4px 6px 4px;
-        border-left: 1px solid #ddd;
-        background-color: #f0f0f0;
-        font-weight: normal;
-    }
-
-    tr {
-        display: table-row;
-        vertical-align: inherit;
-        border-color: inherit;
-    }
-
-    td {
-        padding: 5px 4px 6px 4px;
-        text-align: left;
-        vertical-align: top;
-        border-left: 1px solid #ddd;
-    }
-
-    td {
-        border-top: 1px solid #ddd;
-    }
-
-    thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
-        border-radius: 4px 0 0 0;
-    }
-
-    thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
-        border-radius: 0 0 0 4px;
-    }
-
 }
 
 @media (orientation: portrait) {
@@ -161,17 +173,15 @@
 
     .sidebar {
         display: none;
-        position: fixed;
+        position: absolute;
         left: 0;
-        top: 0;
-        color: white;
-        padding: 10px;
+        top: 80px;
         width: 100vw;
-        min-width: 200px;
         align-content: center;
-        transition: transofrm 0.3s ease;
-        transform: translateX(-100%);
+        transition: transform 0.1s ease-in;
+        transform: translateY(-100%);
         max-height: 100%;
+        padding: 10px;
     }
 
     .hamburger-menu {
@@ -180,39 +190,43 @@
         position: relative;
     }
 
-
-    .sidebar.open {
-        display: block;
-        transform: translateX(0);
-        max-height: 100vh;
-    }
-
-    .icon {
-        position: absolute;
-        display: block;
-        width: 10px;
-        top: 20px;
-        right: 20px;
-        color: black;
-        cursor: pointer;
-    }
-
-    .page.menu-open .content-container {
-        margin-top: 250px;
-    }
-
     .content-container {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
         gap: 10px;
         padding: 10px;
+        transition: margin-top 0.1s ease-in;
+    }
+
+    .content-container.menu-open {
+        margin-top: 180px;
+    }
+
+    .sidebar.open {
+        display: block;
+        transform: translateY(0);
+        max-height: 100vh;
+    }
+
+    button.icon {
+        position: absolute;
+        display: block;
+        width: auto;
+        height: auto;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        background-color: transparent;
+        color: black;
+        border-radius: 0;
+        padding: 0;
+        z-index: 1000;
     }
 
     .svg-container {
-        display: flex;
+        margin-top: 10px;
         max-height: 75px;
-        width: 100%;
         align-content: center;
         justify-content: center;
         align-items: center;
@@ -221,132 +235,26 @@
     .button-container {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
         gap: 10px;
-        margin-top: 10px;
+        flex-wrap: wrap;
     }
 
 
-    #numbers, #payment, #admin {
-        width: 100%;
+    #numbers,
+    #payment,
+    #admin {
         height: 50px;
-        padding: 10px 20px;
-        font-size: 20px;
-        font-family: 'Ubuntu', sans-serif;
-        cursor: pointer;
-        background-color: #f0f0f0;
-        color: black;
-        border: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        vertical-align: middle;
     }
 
     #join {
-        width: 100%;
         height: 50px;
-        padding: 10px 20px;
-        font-size: 20px;
-        font-family: 'Ubuntu', sans-serif;
-        cursor: pointer;
-        background-color: #d50032;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        vertical-align: middle;
-    }
-
-    #numbers, #payment, #admin, #join:hover {
-        background-color: #d50032;
-        color: white;
     }
 
     #menu-button {
+        display: block;
         width: 30px;
         height: 30px;
         align-items: center;
-        vertical-align: middle;
         background: none;
-        border: none;
-    }
-
-    .content1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        color: black;
-        border-bottom: 2px black solid;
-        min-height: 100px;
-        font-family: 'Ubuntu', sans-serif;
-        white-space: normal;
-        font-size: large;
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    .join {
-        background-color: #d50032;
-        padding: 20px;
-        color: white;
-        font-weight: bold;
-        vertical-align: middle;
-    }
-
-    .content3 {
-        color: black;
-    }
-
-    table {
-        border: 1px solid #ddd;
-        border-collapse: separate;
-        border-left: 0;
-        border-radius: 4px;
-        border-spacing: 0;
-        width: 100%;
-    }
-
-    thead {
-        display: table-header-group;
-        vertical-align: middle;
-        border-color: inherit;
-        border-collapse: separate;
-    }
-
-    th {
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-        padding: 5px 4px 6px 4px;
-        border-left: 1px solid #ddd;
-        background-color: #f0f0f0;
-        font-weight: normal;
-    }
-
-    tr {
-        display: table-row;
-        vertical-align: inherit;
-        border-color: inherit;
-    }
-
-    td {
-        padding: 5px 4px 6px 4px;
-        text-align: left;
-        vertical-align: top;
-        border-left: 1px solid #ddd;
-    }
-
-    td {
-        border-top: 1px solid #ddd;
-    }
-
-    thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
-        border-radius: 4px 0 0 0;
-    }
-
-    thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
-        border-radius: 0 0 0 4px;
     }
 }

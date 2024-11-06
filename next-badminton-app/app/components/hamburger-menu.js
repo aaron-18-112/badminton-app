@@ -3,13 +3,7 @@
 import {useState} from "react";
 import '../globals.css';
 
-export function HamburgerMenu() {
-
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
+export function HamburgerMenu({toggleMenu, menuOpen}) {
 
     return (
         <div className={`hamburger-menu ${menuOpen ? 'menu-open' : ''}`}>

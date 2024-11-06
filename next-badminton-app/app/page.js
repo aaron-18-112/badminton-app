@@ -6,6 +6,12 @@ import {HamburgerMenu} from "@/app/components/hamburger-menu";
 
 export default function Home() {
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     const [date, setDate] = useState(null);
     useEffect(() => {
         const d = new Date(2024, 10, 12, 17, 0);
@@ -24,8 +30,6 @@ export default function Home() {
     return (
         <div className="page">
 
-            <HamburgerMenu/>
-
             <div className="sidebar">
 
                 <img className="svg-container" alt="Logo" src="logo-SVG.svg"/>
@@ -37,9 +41,8 @@ export default function Home() {
                 </nav>
 
             </div>
-
-
-            <div className="content-container">
+            <HamburgerMenu toggleMenu={toggleMenu} menuOpen={menuOpen}/>
+            <div className={`content-container ${menuOpen ? 'menu-open' : ''}`}>
                 <section className="content1">
                     <p>Next Badminton Session: {formattedDate}, {formattedTime}</p>
                     <p>Total Number of Players: XXX</p>
