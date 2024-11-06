@@ -1,6 +1,5 @@
 "use client";
 
-import {useState} from "react";
 import '../globals.css';
 
 export function HamburgerMenu({toggleMenu, menuOpen}) {
