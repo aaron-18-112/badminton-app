@@ -1,0 +1,19 @@
+<app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
+
+<div [ngClass]="{'menu-open': menuOpen}" class="content-container">
+    <section class="content1">
+        <p>
+            <span class="black-text">Next Badminton Session: </span>
+            <app-date-and-time></app-date-and-time>
+        </p>
+
+        <p>
+            <span class="black-text">Total Number of Players: </span>
+            <span class="red-text">{{ rowCount }}</span>
+        </p>
+    </section>
+    <app-accordion (addRow)="handleRowAddition($event)"></app-accordion>
+    <div class="content3">
+        <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
+    </div>
+</div>

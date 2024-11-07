@@ -1,0 +1,35 @@
+<section class="accordion">
+    <button (click)="toggleAccordion()" [attr.aria-expanded]="isOpen ? 'true' : 'false'" class="join" id="join">
+        Join
+    </button>
+
+    <div *ngIf="isOpen" class="accordion-content">
+        <form (submit)="handleSubmit($event)">
+            <label for="fname">First Name:</label><br/>
+            <input
+                    [(ngModel)]="formData.fname"
+                    id="fname"
+                    name="fname"
+                    type="text"
+            /><br/>
+
+            <label for="lname">Last Name:</label><br/>
+            <input
+                    [(ngModel)]="formData.lname"
+                    id="lname"
+                    name="lname"
+                    type="text"
+            /><br/>
+
+            <label for="email">Email Address:</label><br/>
+            <input
+                    [(ngModel)]="formData.email"
+                    id="email"
+                    name="email"
+                    type="email"
+            /><br/>
+
+            <input id="submit" type="submit" value="Submit"/>
+        </form>
+    </div>
+</section>

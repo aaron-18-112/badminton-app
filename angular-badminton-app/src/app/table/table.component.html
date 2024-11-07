@@ -1,0 +1,18 @@
+<table [ngStyle]="{width: '100%'}">
+    <thead>
+    <tr>
+        <th [ngStyle]="{width: '80%'}">Name</th>
+        <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of rows; let i = index">
+        <td>{{ row.name }}</td>
+        <td>
+            <button id="remove-button" (click)="handleRemoveRow(i)">
+                <img class= bin-icon src="bin-icon.svg"  alt="remove"/>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
