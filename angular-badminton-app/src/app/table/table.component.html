@@ -10,11 +10,11 @@
         <td>{{ row.name }}</td>
         <td>
             <button
-                    id="remove-button"
                     (click)="handleRemoveRow(i)"
                     [attr.aria-label]="'Remove ' + row.name"
+                    id="remove-button"
             >
-                <img class="bin-icon" alt="Remove" src="bin-icon.svg" />
+                <img alt="Remove" class="bin-icon" src="bin-icon.svg"/>
             </button>
         </td>
     </tr>
