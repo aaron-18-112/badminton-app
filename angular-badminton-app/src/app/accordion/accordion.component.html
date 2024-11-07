@@ -7,7 +7,6 @@
         <form (submit)="handleSubmit($event)">
             <label for="fname">First Name:</label><br/>
             <input
-                    (ngModelChange)="handleChange($event, 'fname')"
                     [(ngModel)]="formData.fname"
                     id="fname"
                     name="fname"
@@ -16,7 +15,6 @@
 
             <label for="lname">Last Name:</label><br/>
             <input
-                    (ngModelChange)="handleChange($event, 'lname')"
                     [(ngModel)]="formData.lname"
                     id="lname"
                     name="lname"
@@ -25,7 +23,6 @@
 
             <label for="email">Email Address:</label><br/>
             <input
-                    (ngModelChange)="handleChange($event, 'email')"
                     [(ngModel)]="formData.email"
                     id="email"
                     name="email"

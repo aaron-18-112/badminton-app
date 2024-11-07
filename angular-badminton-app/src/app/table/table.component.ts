@@ -1,5 +1,5 @@
 import {NgFor, NgStyle} from '@angular/common';
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 interface Row {
     name: string;
@@ -18,8 +18,9 @@ interface Row {
 
 export class TableComponent {
     @Input() rows: Row[] = [];
+    @Output() removeRow = new EventEmitter<number>();
 
     handleRemoveRow(index: number): void {
-        this.rows.splice(index, 1);
+        this.removeRow.emit(index);
     }
 }

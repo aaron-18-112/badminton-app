@@ -9,12 +9,8 @@
     <tr *ngFor="let row of rows; let i = index">
         <td>{{ row.name }}</td>
         <td>
-            <button
-                    (click)="handleRemoveRow(i)"
-                    [attr.aria-label]="'Remove ' + row.name"
-                    id="remove-button"
-            >
-                <img alt="Remove" class="bin-icon" src="bin-icon.svg"/>
+            <button id="remove-button" (click)="handleRemoveRow(i)">
+                <img class= bin-icon src="bin-icon.svg"  alt="remove"/>
             </button>
         </td>
     </tr>

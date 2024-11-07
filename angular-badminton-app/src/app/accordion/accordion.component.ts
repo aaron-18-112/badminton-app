@@ -30,7 +30,7 @@ export class AccordionComponent {
 
     handleChange(event: Event, field: keyof typeof this.formData) {
         const input = event.target as HTMLInputElement;
-        this.formData[field] = input.value;
+        this.formData[field] = input?.value || '';
     }
 
     handleSubmit(event: Event) {
