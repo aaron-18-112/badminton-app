@@ -41,7 +41,6 @@ export class ContentComponent {
 
 }
 
-
 interface Row {
     name: string;
     email?: string;

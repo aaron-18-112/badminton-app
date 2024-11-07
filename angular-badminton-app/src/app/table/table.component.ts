@@ -19,10 +19,6 @@ interface Row {
 export class TableComponent {
     @Input() rows: Row[] = [];
 
-    handleAddRow(row: Row): void {
-        this.rows.push(row);  // Push the Row object, not just a string
-    }
-
     handleRemoveRow(index: number): void {
         this.rows.splice(index, 1);
     }
