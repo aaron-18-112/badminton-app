@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {AccordionComponent} from "./accordion/accordion.component";
 import {NavComponent} from "./nav/nav.component";
@@ -13,7 +13,7 @@ import {HamburgerMenuComponent} from "./hamburger-menu/hamburger-menu.component"
       NavComponent,
       ContentComponent,
       HamburgerMenuComponent,
-      AccordionComponent
+      AccordionComponent,
   ],
   template: `
 

@@ -79,7 +79,8 @@ button:hover {
 }
 
 .join,
-#submit {
+#submit,
+#join {
     background-color: #d50032;
     color: white;
     font-weight: bold;
@@ -302,6 +303,7 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
         gap: 10px;
         padding: 10px;
         transition: margin-top 0.1s ease-in;
+        margin-top: 0;
     }
 
     .content-container.menu-open {

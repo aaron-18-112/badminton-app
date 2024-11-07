@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
+import {MenuStateService} from "../menu-state.service";
 
 @Component({
   selector: 'app-hamburger-menu',
@@ -12,7 +13,7 @@ import { NgClass } from '@angular/common';
           <button class="icon" id="menu-button" (click)="toggleMenu()" aria-label="Toggle Menu">
               <img
                       alt="{{ menuOpen ? 'Close Menu' : 'Open Menu' }}"
-                      [src]="menuOpen ? 'assets/close-icon.svg' : '/hamburger-icon.svg'"
+                      [src]="menuOpen ? '/close-icon.svg' : '/hamburger-icon.svg'"
               />
           </button>
 
@@ -26,12 +27,19 @@ import { NgClass } from '@angular/common';
           </div>
       </div>
   `,
-  styles: ``
 })
-export class HamburgerMenuComponent {
+export class HamburgerMenuComponent implements OnInit {
   menuOpen: boolean = false;
 
+  constructor(private menuStateService: MenuStateService) {}
+
+  ngOnInit() {
+    this.menuStateService.menuOpen$.subscribe(state => {
+      this.menuOpen = state;
+    });
+  }
+
   toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+    this.menuStateService.toggleMenu();
   }
 }
