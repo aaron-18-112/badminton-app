@@ -16,8 +16,6 @@ import {HamburgerMenuComponent} from "./hamburger-menu/hamburger-menu.component"
         AccordionComponent,
     ],
     template: `
-
-        <body>
         <div class="page">
             <div class="sidebar">
                 <img class="svg-container" alt="Logo" src="logo-SVG.svg">
@@ -25,7 +23,6 @@ import {HamburgerMenuComponent} from "./hamburger-menu/hamburger-menu.component"
             </div>
             <app-content></app-content>
         </div>
-        </body>
         <router-outlet/>
     `,
     styles: [],

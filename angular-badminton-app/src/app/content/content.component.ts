@@ -3,6 +3,7 @@ import {TableComponent} from "../table/table.component";
 import {DateAndTimeComponent} from "../date-and-time/date-and-time.component";
 import {NgClass} from '@angular/common';
 import {HamburgerMenuComponent} from "../hamburger-menu/hamburger-menu.component";
+import {AccordionComponent} from "../accordion/accordion.component";
 
 @Component({
     selector: 'app-content',
@@ -11,7 +12,8 @@ import {HamburgerMenuComponent} from "../hamburger-menu/hamburger-menu.component
         TableComponent,
         DateAndTimeComponent,
         NgClass,
-        HamburgerMenuComponent
+        HamburgerMenuComponent,
+        AccordionComponent
     ],
     templateUrl: `content.component.html`,
     styles: ``
@@ -21,6 +23,9 @@ export class ContentComponent {
 
     toggleMenu(): void {
         this.menuOpen = !this.menuOpen;// Toggle the state of the menu
-        console.log('Menu toggled:', this.menuOpen)
+    }
+
+    handleRowAddition(fullName: string) {
+        console.log('New Row Added:', fullName);
     }
 }
