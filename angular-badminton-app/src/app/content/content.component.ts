@@ -19,7 +19,8 @@ import {HamburgerMenuComponent} from "../hamburger-menu/hamburger-menu.component
 export class ContentComponent {
     menuOpen = false;
 
-    toggleMenu() {
-        this.menuOpen = !this.menuOpen;
+    toggleMenu(): void {
+        this.menuOpen = !this.menuOpen;// Toggle the state of the menu
+        console.log('Menu toggled:', this.menuOpen)
     }
 }

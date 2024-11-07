@@ -2,7 +2,7 @@
     <!-- Hamburger icon -->
     <img alt="Logo" class="svg-container" src="logo-SVG.svg"/>
 
-    <button (click)="toggleMenu()" aria-label="Toggle Menu" class="icon" id="menu-button">
+    <button (click)="toggleMenuState()" aria-label="Toggle Menu" class="icon" id="menu-button">
         <img [src]="menuOpen ? '/close-icon.svg' : '/hamburger-icon.svg'"
              alt="{{ menuOpen ? 'Close Menu' : 'Open Menu' }}"/>
     </button>

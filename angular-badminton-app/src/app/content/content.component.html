@@ -1,6 +1,6 @@
-<app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
+<app-hamburger-menu [menuOpen]="menuOpen" (toggleMenu)="toggleMenu()"></app-hamburger-menu>
 
-<div [ngClass]="{'menu-open': menuOpen}" class="content-container">
+<div class="content-container" [ngClass]="{'menu-open': menuOpen}">
     <section class="content1">
         <p>
             <span class="black-text">Next Badminton Session: </span>

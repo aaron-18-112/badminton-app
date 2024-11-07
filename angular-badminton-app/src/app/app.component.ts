@@ -23,7 +23,6 @@ import {HamburgerMenuComponent} from "./hamburger-menu/hamburger-menu.component"
                 <img class="svg-container" alt="Logo" src="logo-SVG.svg">
                 <app-nav></app-nav>
             </div>
-            <app-hamburger-menu></app-hamburger-menu>
             <app-content></app-content>
         </div>
         </body>
