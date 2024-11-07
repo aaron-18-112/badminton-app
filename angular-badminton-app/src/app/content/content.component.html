@@ -1,6 +1,6 @@
-<app-hamburger-menu [menuOpen]="menuOpen" (toggleMenu)="toggleMenu()"></app-hamburger-menu>
+<app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
 
-<div class="content-container" [ngClass]="{'menu-open': menuOpen}">
+<div [ngClass]="{'menu-open': menuOpen}" class="content-container">
     <section class="content1">
         <p>
             <span class="black-text">Next Badminton Session: </span>
@@ -9,11 +9,11 @@
 
         <p>
             <span class="black-text">Total Number of Players: </span>
-            <span class="red-text"></span>
+            <span class="red-text">{{ rowCount }}</span>
         </p>
     </section>
     <app-accordion (addRow)="handleRowAddition($event)"></app-accordion>
     <div class="content3">
-        <app-table></app-table>
+        <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
     </div>
 </div>

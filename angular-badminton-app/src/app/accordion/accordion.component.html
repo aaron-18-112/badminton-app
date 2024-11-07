@@ -1,38 +1,38 @@
 <section class="accordion">
-    <button class="join" id="join" (click)="toggleAccordion()" [attr.aria-expanded]="isOpen ? 'true' : 'false'">
+    <button (click)="toggleAccordion()" [attr.aria-expanded]="isOpen ? 'true' : 'false'" class="join" id="join">
         Join
     </button>
 
     <div *ngIf="isOpen" class="accordion-content">
         <form (submit)="handleSubmit($event)">
-            <label for="fname">First Name:</label><br />
+            <label for="fname">First Name:</label><br/>
             <input
-                    type="text"
+                    (ngModelChange)="handleChange($event, 'fname')"
+                    [(ngModel)]="formData.fname"
                     id="fname"
                     name="fname"
-                    [(ngModel)]="formData.fname"
-                    (ngModelChange)="handleChange($event, 'fname')"
-            /><br />
-
-            <label for="lname">Last Name:</label><br />
-            <input
                     type="text"
+            /><br/>
+
+            <label for="lname">Last Name:</label><br/>
+            <input
+                    (ngModelChange)="handleChange($event, 'lname')"
+                    [(ngModel)]="formData.lname"
                     id="lname"
                     name="lname"
-                    [(ngModel)]="formData.lname"
-                    (ngModelChange)="handleChange($event, 'lname')"
-            /><br />
+                    type="text"
+            /><br/>
 
-            <label for="email">Email Address:</label><br />
+            <label for="email">Email Address:</label><br/>
             <input
-                    type="email"
+                    (ngModelChange)="handleChange($event, 'email')"
+                    [(ngModel)]="formData.email"
                     id="email"
                     name="email"
-                    [(ngModel)]="formData.email"
-                    (ngModelChange)="handleChange($event, 'email')"
-            /><br />
+                    type="email"
+            /><br/>
 
-            <input type="submit" id="submit" value="Submit" />
+            <input id="submit" type="submit" value="Submit"/>
         </form>
     </div>
 </section>

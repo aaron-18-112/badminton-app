@@ -1,8 +1,9 @@
 import {NgFor, NgStyle} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 interface Row {
     name: string;
+    email?: string;
 }
 
 @Component({
@@ -16,11 +17,11 @@ interface Row {
 })
 
 export class TableComponent {
-    rows: Row[] = [
-        {name: 'Row 1'},
-        {name: 'Row 2'},
-        {name: 'Row 3'}
-    ];
+    @Input() rows: Row[] = [];
+
+    handleAddRow(row: Row): void {
+        this.rows.push(row);  // Push the Row object, not just a string
+    }
 
     handleRemoveRow(index: number): void {
         this.rows.splice(index, 1);
