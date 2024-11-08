@@ -6,13 +6,8 @@
     <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
     <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
         <app-event-info></app-event-info>
-        <div id="amount">
-            <h1> amount to be paid: </h1>
-            <h2>£10.50</h2>
-        </div>
-        <app-table></app-table>
-
+        <app-payment-amount></app-payment-amount>
+        <app-payment-table></app-payment-table>
     </div>
-
 
 </div>

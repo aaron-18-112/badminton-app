@@ -2,21 +2,22 @@
     <thead>
     <tr>
         <th [ngStyle]="{width: '80%'}">Name</th>
-        <th>Paid</th>
+        <th>Paid?</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let row of rows; let i = index">
-        <td>{{ row.name }}</td>
-        <td>
-            <input
-                    type="checkbox"
-                    aria-label="Mark as paid"
-                    class="checkbox-icon"
-                    [(ngModel)]="row.paid"
-
-            />
-        </td>
+    <tr>
+        <td>Name 1</td>
+        <td><input type="checkbox"></td>
     </tr>
+    <tr>
+        <td>Name 2</td>
+        <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+        <td>Name 3</td>
+        <td><input type="checkbox"></td>
+    </tr>
+
     </tbody>
 </table>

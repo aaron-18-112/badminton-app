@@ -14,7 +14,7 @@
 }
 
 .page {
-    min-height: 100vh;
+    min-height:100vh;
 }
 
 .svg-container {
@@ -51,7 +51,7 @@ button {
     }
 
     .content-container {
-        width: 80vw;
+        width: 100vw;
         gap: 10px;
         padding: 10px;
     }
