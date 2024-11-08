@@ -15,7 +15,7 @@ interface Row {
         CommonModule
     ],
     templateUrl: `accordion.component.html`,
-    styles: ``
+    styleUrls: ['accordion.component.css']
 })
 export class AccordionComponent {
     isOpen: boolean = false;

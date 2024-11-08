@@ -4,14 +4,8 @@ import {Component} from '@angular/core';
     selector: 'app-nav',
     standalone: true,
     imports: [],
-    template: `
-        <nav class="button-container">
-            <button aria-label="Numbers" id="numbers">Numbers</button>
-            <button aria-label="Payment" id="payment">Payment</button>
-            <button aria-label="Admin" id="admin">Admin</button>
-        </nav>
-    `,
-    styles: ``
+    templateUrl: `nav.component.html`,
+    styleUrls: ['nav.component.css']
 })
 export class NavComponent {
 

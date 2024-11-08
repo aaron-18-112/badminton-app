@@ -6,6 +6,7 @@ import {NgClass} from '@angular/common';
     standalone: true,
     imports: [NgClass],
     templateUrl: `hamburger-menu.component.html`,
+    styleUrls: ['hamburger-menu.component.css']
 })
 export class HamburgerMenuComponent {
     @Input() menuOpen: boolean = false;

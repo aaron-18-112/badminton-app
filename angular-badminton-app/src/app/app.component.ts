@@ -15,17 +15,8 @@ import {HamburgerMenuComponent} from "./hamburger-menu/hamburger-menu.component"
         HamburgerMenuComponent,
         AccordionComponent,
     ],
-    template: `
-        <div class="page">
-            <div class="sidebar">
-                <img class="svg-container" alt="Logo" src="logo-SVG.svg">
-                <app-nav></app-nav>
-            </div>
-            <app-content></app-content>
-        </div>
-        <router-outlet/>
-    `,
-    styles: [],
+    templateUrl: `app.component.html`,
+    styleUrls: ['app.component.css'],
 })
 export class AppComponent {
     title = 'AJ Bell ShuttleBell';
