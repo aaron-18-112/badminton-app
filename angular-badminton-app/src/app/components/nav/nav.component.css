@@ -26,8 +26,8 @@ button:hover {
 
 @media (orientation: portrait) {
     #enrol,
-    #payment,
-    #admin {
+    #payment
+    {
         height: 50px;
     }
 }
