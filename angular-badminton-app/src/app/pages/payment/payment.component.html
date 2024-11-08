@@ -3,9 +3,16 @@
         <img alt="Logo" class="svg-container" src="logo-SVG.svg">
         <app-nav></app-nav>
     </div>
-
-    <div class="content-container">
+    <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
+    <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
         <app-event-info></app-event-info>
+        <div id="amount">
+            <h1> amount to be paid: </h1>
+            <h2>£10.50</h2>
+        </div>
+        <app-table></app-table>
+
     </div>
+
 
 </div>
