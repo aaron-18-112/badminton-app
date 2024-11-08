@@ -9,11 +9,11 @@ import {Row} from "../../row";
         NgStyle,
         NgFor
     ],
-    templateUrl: 'table.component.html',
-    styleUrls: ['table.component.css']
+    templateUrl: 'enrol-table.component.html',
+    styleUrls: ['enrol-table.component.css']
 })
 
-export class TableComponent {
+export class EnrolTableComponent {
     @Input() rows: Row[] = [];
     @Output() removeRow = new EventEmitter<number>();
 

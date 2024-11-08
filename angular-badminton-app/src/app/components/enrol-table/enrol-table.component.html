@@ -9,8 +9,8 @@
     <tr *ngFor="let row of rows; let i = index">
         <td>{{ row.name }}</td>
         <td>
-            <button id="remove-button" (click)="handleRemoveRow(i)">
-                <img class= bin-icon src="bin-icon.svg"  alt="remove"/>
+            <button (click)="handleRemoveRow(i)" id="remove-button">
+                <img alt="remove" class=bin-icon src="bin-icon.svg"/>
             </button>
         </td>
     </tr>

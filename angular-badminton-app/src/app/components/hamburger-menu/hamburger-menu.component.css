@@ -48,6 +48,7 @@ button:hover {
         display: block;
         transform: translateY(0);
         max-height: 100vh;
+        transition: transform 0.1s ease-in;
     }
 
 
@@ -103,8 +104,7 @@ button:hover {
     }
 
     #enrol,
-    #payment
-    {
+    #payment {
         height: 50px;
     }
 

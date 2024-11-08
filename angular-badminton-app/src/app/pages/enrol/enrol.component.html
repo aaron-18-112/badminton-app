@@ -1,7 +1,15 @@
 <div class="page">
     <div class="sidebar">
-        <img class="svg-container" alt="Logo" src="logo-SVG.svg">
+        <img alt="Logo" class="svg-container" src="logo-SVG.svg">
         <app-nav></app-nav>
     </div>
-    <app-content></app-content>
+    <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
+    <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
+        <app-event-info></app-event-info>
+        <app-accordion (addRow)="handleRowAddition($event)"></app-accordion>
+        <div class="table-component">
+            <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
+        </div>
+    </div>
+
 </div>
