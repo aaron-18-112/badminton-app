@@ -3,9 +3,11 @@
         <img alt="Logo" class="svg-container" src="logo-SVG.svg">
         <app-nav></app-nav>
     </div>
-
-    <div class="content-container">
+    <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
+    <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
         <app-event-info></app-event-info>
+        <app-payment-amount></app-payment-amount>
+        <app-payment-table></app-payment-table>
     </div>
 
 </div>
