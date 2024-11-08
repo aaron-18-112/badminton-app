@@ -16,6 +16,7 @@ button:hover {
     background-color: #d50032;
     color: white;
 }
+
 .accordion-content {
     width: 100%;
 }
@@ -95,7 +96,7 @@ button:hover {
 
 }
 
-@media(orientation: portrait) {
+@media (orientation: portrait) {
 
     .content-container {
         flex-grow: 1;

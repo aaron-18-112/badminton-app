@@ -36,6 +36,7 @@ button {
     font-weight: normal;
 }
 
+
 @media (orientation: landscape) {
     .page {
         display: flex;
@@ -51,6 +52,8 @@ button {
 
     .content-container {
         width: 80vw;
+        gap: 10px;
+        padding: 10px;
     }
 
     .svg-container {
@@ -60,12 +63,22 @@ button {
     .button-container {
         flex-direction: column;
     }
+
+
 }
 
 @media (orientation: portrait) {
     .page {
         flex-direction: column;
         min-height: 100vh;
+    }
+
+    .svg-container {
+        margin-top: 10px;
+        max-height: 75px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
     }
 
     .sidebar {
@@ -80,5 +93,21 @@ button {
         max-height: 100%;
         padding: 10px;
     }
+
+    .content-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        transition: margin-top 0.1s ease-in;
+        margin-top: 0;
+    }
+
+    .content-container.menu-open {
+        margin-top: 100px;
+        transition: margin-top 0.1s ease-in;
+    }
+
 }
 

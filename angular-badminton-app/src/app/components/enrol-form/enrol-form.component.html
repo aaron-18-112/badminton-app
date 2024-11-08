@@ -1,9 +1,9 @@
-<form [formGroup]="enrolForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="enrolForm">
     <div *ngIf="isOpen" class="accordion-content">
         <label for="firstName">First Name:</label>
         <input
-                id="firstName"
                 formControlName="firstName"
+                id="firstName"
                 type="text"
         /><br/>
 
@@ -13,8 +13,8 @@
 
         <label for="lastName">Last Name:</label>
         <input
-                id="lastName"
                 formControlName="lastName"
+                id="lastName"
                 type="text"
         /><br/>
 
@@ -24,8 +24,8 @@
 
         <label for="email">Email Address:</label>
         <input
-                id="email"
                 formControlName="email"
+                id="email"
                 type="email"
         /><br/>
 
@@ -34,6 +34,6 @@
             <div *ngIf="email.hasError('pattern')">Please enter a valid email address.</div>
         </div>
 
-        <button type="submit" id="submit" [disabled]="!enrolForm.valid">Submit</button>
+        <button [disabled]="!enrolForm.valid" id="submit" type="submit">Submit</button>
     </div>
 </form>

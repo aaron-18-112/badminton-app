@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {EnrolFormComponent} from "../enrol-form/enrol-form.component";
 import {Row} from "../../row";
 
