@@ -1,7 +1,6 @@
 <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
-
 <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
-    <section class="content1">
+    <section class="info">
         <p>
             <span class="black-text">Next Badminton Session: </span>
             <app-date-and-time></app-date-and-time>
@@ -13,7 +12,7 @@
         </p>
     </section>
     <app-accordion (addRow)="handleRowAddition($event)"></app-accordion>
-    <div class="content3">
+    <div class="table-component">
         <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
     </div>
 </div>

@@ -1,31 +1,15 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {AccordionComponent} from "./accordion/accordion.component";
-import {NavComponent} from "./nav/nav.component";
-import {ContentComponent} from "./content/content.component";
-import {HamburgerMenuComponent} from "./hamburger-menu/hamburger-menu.component";
+import {RouterOutlet, RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     imports: [
         RouterOutlet,
-        NavComponent,
-        ContentComponent,
-        HamburgerMenuComponent,
-        AccordionComponent,
+        RouterLink,
+        RouterLinkActive,
     ],
-    template: `
-        <div class="page">
-            <div class="sidebar">
-                <img class="svg-container" alt="Logo" src="logo-SVG.svg">
-                <app-nav></app-nav>
-            </div>
-            <app-content></app-content>
-        </div>
-        <router-outlet/>
-    `,
-    styles: [],
+    templateUrl: `app.component.html`,
 })
 export class AppComponent {
     title = 'AJ Bell ShuttleBell';

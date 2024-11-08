@@ -1,0 +1,56 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #df0032;
+    font-weight: bold;
+    border-bottom: 2px black solid;
+    min-height: 100px;
+    white-space: normal;
+    font-size: 1.3em;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+.black-text {
+    color: black;
+}
+
+.red-text {
+    color: #df0032;
+}
+
+.table-component {
+    color: black;
+}
+
+@media (orientation: landscape) {
+
+    .content-container {
+        width: 80vw;
+        gap: 10px;
+        padding: 10px;
+    }
+
+}
+@media (orientation: portrait) {
+
+    .content-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        transition: margin-top 0.1s ease-in;
+        margin-top: 0;
+    }
+
+
+    .content-container.menu-open {
+        margin-top: 180px;
+    }
+
+}

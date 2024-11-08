@@ -16,7 +16,7 @@ import {AccordionComponent} from "../accordion/accordion.component";
         AccordionComponent
     ],
     templateUrl: `content.component.html`,
-    styles: ``
+    styleUrls: ['content.component.css']
 })
 export class ContentComponent {
     menuOpen = false;
