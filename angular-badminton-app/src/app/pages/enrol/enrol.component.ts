@@ -27,8 +27,6 @@ export class EnrolComponent {
     menuOpen = false;
     rows: Row[] = [];  // Define rows as an array of Row objects
 
-
-
     toggleMenu(): void {
         this.menuOpen = !this.menuOpen; // Toggle the state of the menu
     }
