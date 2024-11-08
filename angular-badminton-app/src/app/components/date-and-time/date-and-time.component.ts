@@ -5,7 +5,6 @@ import {Component, OnInit} from '@angular/core';
     standalone: true,
     imports: [],
     templateUrl: 'date-and-time.component.html',
-    styleUrls: [`date-and-time.component.css`]
 })
 export class DateAndTimeComponent implements OnInit {
     date: Date | null = null;
