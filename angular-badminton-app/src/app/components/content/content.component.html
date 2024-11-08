@@ -13,6 +13,6 @@
     </section>
     <app-accordion (addRow)="handleRowAddition($event)"></app-accordion>
     <div class="table-component">
-        <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
+        <app-table [rows]="rows" (removeRow)="handleRowRemoval($event)"></app-table>
     </div>
 </div>

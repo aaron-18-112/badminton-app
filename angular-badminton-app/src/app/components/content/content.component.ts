@@ -4,6 +4,7 @@ import {DateAndTimeComponent} from "../date-and-time/date-and-time.component";
 import {NgClass} from '@angular/common';
 import {HamburgerMenuComponent} from "../hamburger-menu/hamburger-menu.component";
 import {AccordionComponent} from "../accordion/accordion.component";
+import {Row} from "../../row";
 
 @Component({
     selector: 'app-content',
@@ -39,10 +40,5 @@ export class ContentComponent {
         this.rows.splice(index, 1);  // Remove the row at the specified index
     }
 
-}
-
-interface Row {
-    name: string;
-    email?: string;
 }
 
