@@ -1,0 +1,39 @@
+<form [formGroup]="enrolForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="isOpen" class="accordion-content">
+        <label for="firstName">First Name:</label>
+        <input
+                id="firstName"
+                formControlName="firstName"
+                type="text"
+        /><br/>
+
+        <div *ngIf="firstName.invalid && (firstName.dirty)" class="alert alert-danger">
+            <div *ngIf="firstName.hasError('required')">First Name is required.</div>
+        </div>
+
+        <label for="lastName">Last Name:</label>
+        <input
+                id="lastName"
+                formControlName="lastName"
+                type="text"
+        /><br/>
+
+        <div *ngIf="lastName.invalid && (lastName.dirty)" class="alert alert-danger">
+            <div *ngIf="lastName.hasError('required')">Last Name is required.</div>
+        </div>
+
+        <label for="email">Email Address:</label>
+        <input
+                id="email"
+                formControlName="email"
+                type="email"
+        /><br/>
+
+        <div *ngIf="email.invalid && (email.dirty)" class="alert alert-danger">
+            <div *ngIf="email.hasError('required')">Email is required.</div>
+            <div *ngIf="email.hasError('pattern')">Please enter a valid email address.</div>
+        </div>
+
+        <button type="submit" id="submit" [disabled]="!enrolForm.valid">Submit</button>
+    </div>
+</form>

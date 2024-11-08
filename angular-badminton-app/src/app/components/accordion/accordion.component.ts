@@ -1,17 +1,13 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
-
-interface Row {
-    name: string;
-    email?: string;
-}
+import { CommonModule } from '@angular/common';
+import {EnrolFormComponent} from "../enrol-form/enrol-form.component";
+import {Row} from "../../row";
 
 @Component({
     selector: 'app-accordion',
     standalone: true,
     imports: [
-        FormsModule,
+        EnrolFormComponent,
         CommonModule
     ],
     templateUrl: `accordion.component.html`,
@@ -19,29 +15,20 @@ interface Row {
 })
 export class AccordionComponent {
     isOpen: boolean = false;
-    formData = {fname: '', lname: '', email: ''};
 
     @Output() addRow = new EventEmitter<Row>();
 
     toggleAccordion() {
         this.isOpen = !this.isOpen;
-
     }
 
-    handleChange(event: Event, field: keyof typeof this.formData) {
-        const input = event.target as HTMLInputElement;
-        this.formData[field] = input?.value || '';
-    }
+    handleFormSubmit(formData: any): void {
 
-    handleSubmit(event: Event) {
-        event.preventDefault();
-        const fullName = `${this.formData.fname} ${this.formData.lname}`;
         const row: Row = {
-            name: fullName,
-            email: this.formData.email,
-        }
-        this.addRow.emit(row);  // Emit the row object
-        this.formData = {fname: '', lname: '', email: ''};  // Reset the form
-        this.isOpen = false;  // Close the accordion after submitting
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+        };
+        this.addRow.emit(row);
+        this.toggleAccordion();
     }
 }

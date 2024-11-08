@@ -1,10 +1,6 @@
 import {NgFor, NgStyle} from '@angular/common';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-
-interface Row {
-    name: string;
-    email?: string;
-}
+import {Row} from "../../row";
 
 @Component({
     selector: 'app-table',
