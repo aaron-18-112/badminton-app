@@ -15,7 +15,7 @@ export class EventInfoComponent {
 
     rows: Row[] = [];
 
-    get rowCount(): number {
+    get rowCount(): number{
 
         return this.rows.length;
     }
