@@ -1,22 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Roboto, sans-serif;
+    font-family: Ubuntu;
 }
 
+.theme-switcher-container {
+    position: fixed; /* Position relative to the viewport */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    z-index: 1000; /* Ensure it appears on top of other content */
+}
+
+
+
+
+/* Error Bubble Styling */
+.error-bubble {
+    position: relative;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    max-width: 100%;
+    font-size: 0.9em;
+}
+
+.error-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #f8d7da;
+}
+
+/* Text Color Styles */
 .black-text {
     color: black;
+}
+[data-theme="dark"] .black-text {
+    color: white;
 }
 
 .red-text {
     color: #df0032;
 }
 
+/* Page Layout */
 .page {
     min-height: 100vh;
+    background-color: #fff; /* Default light mode */
 }
 
+/* Dark Mode */
+[data-theme="dark"] .page {
+    background-color: #121212; /* Google dark mode background */
+}
+
+/* Content Container */
 .content-container {
     flex-grow: 1;
     display: flex;
@@ -26,15 +76,23 @@
     transition: margin-top 0.1s ease-in;
 }
 
+/* Dark Mode Content */
+[data-theme="dark"] .content-container {
+    color: white; /* Text in white for dark mode */
+}
+
+/* Menu Open Styles */
 .content-container.menu-open {
     margin-top: 180px;
 }
 
+/* SVG Container */
 .svg-container {
     display: flex;
     width: 100%;
 }
 
+/* Button Container */
 .button-container {
     display: flex;
     flex-direction: column;
@@ -57,11 +115,18 @@ button {
     font-weight: normal;
 }
 
-button:hover {
-    background-color: #d50032;
+/* Dark Mode Buttons */
+[data-theme="dark"] button {
+    background-color: #444; /* Darker button for dark mode */
     color: white;
 }
 
+/* Dark Mode Buttons - Hover Effect */
+[data-theme="dark"] button:hover {
+    background-color: #555; /* Slightly lighter dark shade for hover */
+}
+
+/* Content Section */
 .content1 {
     display: flex;
     flex-direction: column;
@@ -78,6 +143,9 @@ button:hover {
     vertical-align: middle;
 }
 
+[data-theme="dark"] #join{
+    background-color: #d50032;
+}
 .join,
 #submit {
     background-color: #d50032;
@@ -92,6 +160,7 @@ button:hover {
     color: black;
 }
 
+/* Table Styling */
 table {
     border: 1px solid #ddd;
     border-collapse: separate;
@@ -99,42 +168,20 @@ table {
     border-spacing: 0;
     width: 100%;
     overflow: hidden;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-    border-collapse: separate;
-    overflow: hidden;
-}
-
-table th:last-child,
-table td:last-child {
-    text-align: center;
-}
-
+/* Table Header */
 th {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
     padding: 10px;
     background-color: #f0f0f0;
     font-weight: normal;
     font-size: 1.1em;
     overflow: hidden;
     border-left: 1px solid #ddd;
-
 }
 
-tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-    overflow: hidden;
-}
-
+/* Table Cell */
 td {
     padding: 10px;
     text-align: left;
@@ -142,18 +189,9 @@ td {
     overflow: hidden;
     border-left: 1px solid #ddd;
     border-top: 1px solid #ddd;
-
 }
 
-
-thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
-    border-radius: 5px 0 0 0;
-}
-
-thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
-    border-radius: 0 0 0 5px;
-}
-
+/* Accordion Form */
 .accordion-content form {
     width: 100%;
     margin: 10px auto;
@@ -163,13 +201,16 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
     transition: background-color 0.3s ease-in;
 }
 
-.accordion-content label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1em;
-    color: black;
+ [data-theme="dark"] .accordion-content form {
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in;
 }
 
+/* Accordion Input Fields */
 .accordion-content input[type="text"],
 .accordion-content input[type="email"] {
     width: 100%;
@@ -182,6 +223,15 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
     transition: box-shadow 0.1s ease-in, border-color 0.1s ease-in;
 }
 
+/* Dark Mode Accordion Inputs */
+[data-theme="dark"] .accordion-content input[type="text"],
+[data-theme="dark"] .accordion-content input[type="email"] {
+    background-color: #333; /* Dark input fields */
+    color: white;
+    border: 1px solid #555;
+}
+
+/* Submit Button */
 .accordion-content input[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -193,7 +243,7 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .accordion-content input[type="submit"]:hover {
@@ -201,12 +251,7 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.accordion-content input[type="text"]:focus,
-.accordion-content input[type="email"]:focus {
-    border-color: #666;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
+/* Remove Button */
 #remove-button {
     height: 30px;
     font-size: 1em;
@@ -219,12 +264,19 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
     transition: background-color 0.1s ease, border-color 0.1s ease;
 }
 
+/* Remove Button Hover */
 #remove-button:hover {
     background-color: transparent;
     border: solid 2px #d50032;
-    transition: background-color 0.1s ease-in, border 0.1s ease-in;
 }
 
+/* Remove Button Focus */
+#remove-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.5);
+}
+
+/* Bin Icon */
 .bin-icon {
     width: 18px;
     height: 18px;
@@ -233,12 +285,52 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
     fill: #333;
 }
 
-#remove-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.5);
+/* Dark Mode Remove Button */
+[data-theme="dark"] #remove-button {
+    border: solid 2px #555;
 }
 
+/* Dark Mode Bin Icon */
+[data-theme="dark"] .bin-icon {
+    fill: white;
+}
 
+/* Dark Mode Styles for YouTube-Like Theme */
+
+/* Background color for dark mode */
+[data-theme="dark"] .page {
+    background-color: #121212;  /* Google dark mode */
+}
+
+/* Dark Mode Buttons - Non Join */
+[data-theme="dark"] button {
+    background-color: #444; /* Darker button than Google dark mode */
+    color: white;
+}
+
+/* Dark Mode Button Hover */
+[data-theme="dark"] button:hover {
+    background-color: #555; /* Slightly lighter dark shade for hover */
+}
+
+/* Table Color in Dark Mode (same as sidebar buttons) */
+[data-theme="dark"] table {
+    background-color: #333; /* Dark color same as sidebar buttons */
+}
+
+/* Table Header in Dark Mode */
+[data-theme="dark"] th {
+    background-color: #444; /* Darker background for table headers */
+    color: white;
+}
+
+/* Table Cells in Dark Mode */
+[data-theme="dark"] td {
+    background-color: #333; /* Darker table cell background */
+    color: white;
+}
+
+/* Mobile Layout Adjustments */
 @media (orientation: landscape) {
     .page {
         display: flex;
@@ -278,40 +370,28 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
 
     .sidebar {
         display: none;
-        position: absolute;
-        left: 0;
-        top: 80px;
-        width: 100%;
-        align-content: center;
-        transition: transform 0.1s ease-in;
-        transform: translateY(-100%);
-        max-height: 100%;
+        background-color: #121212;
+        color: white;
+        min-width: 200px;
         padding: 10px;
-    }
-
-    .hamburger-menu {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-    }
-
-    .content-container {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        transition: margin-top 0.1s ease-in;
-    }
-
-    .content-container.menu-open {
-        margin-top: 180px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .sidebar.open {
         display: block;
         transform: translateY(0);
         max-height: 100vh;
+    }
+
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .content-container.menu-open {
+        margin-top: 180px;
     }
 
     button.icon {
@@ -327,7 +407,6 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
         border-radius: 0;
         padding: 0;
         z-index: 1000;
-        transition: 0.1s ease-in-out;
     }
 
     .svg-container {
@@ -345,25 +424,5 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
         flex-wrap: wrap;
         background-color: white;
         transition: 0.1s ease-in;
-    }
-
-
-    #numbers,
-    #payment,
-    #admin {
-        height: 50px;
-    }
-
-    #join #submit {
-        height: 50px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    #menu-button {
-        display: block;
-        width: 30px;
-        height: 30px;
-        align-items: center;
-        background: none;
     }
 }
