@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {DateAndTimeComponent} from "../date-and-time/date-and-time.component";
 import {Row} from "../../row";
 
@@ -13,10 +13,15 @@ import {Row} from "../../row";
 })
 export class EventInfoComponent {
 
-    rows: Row[] = [];
+
+    @Input() rows: Row[] = [];
 
     get rowCount(): number {
 
         return this.rows.length;
     }
+
+
 }
+
+

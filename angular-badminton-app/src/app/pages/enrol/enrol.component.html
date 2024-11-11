@@ -5,7 +5,7 @@
     </div>
     <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
     <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
-        <app-event-info></app-event-info>
+        <app-event-info [rows] = 'rows'></app-event-info>
         <app-accordion (addRow)="handleRowAddition($event)"></app-accordion>
         <div class="table-component">
             <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
