@@ -1,0 +1,33 @@
+
+#input-amount {
+    font-size: 30px;
+    color: #df0032;
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: 100px;
+    text-align: center;
+}
+
+#input-amount::placeholder {
+    color: #df0032;
+    font-size: 30px;
+    text-align: center;
+}
+
+.payment-total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: #df0032;
+    font-weight: bold;
+    min-height: 100px;
+    white-space: normal;
+    font-size: 1.3em;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    border-bottom: solid black 2px;
+}
