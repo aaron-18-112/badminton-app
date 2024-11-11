@@ -2,10 +2,10 @@
     <div *ngIf="isOpen" class="accordion-content">
         <label for="firstName">First Name:</label>
         <input
+                autocomplete="First name"
                 formControlName="firstName"
                 id="firstName"
                 type="text"
-                autocomplete="First name"
         /><br/>
 
         <div *ngIf="firstName.invalid && (firstName.dirty)" class="alert alert-danger">
@@ -14,10 +14,10 @@
 
         <label for="lastName">Last Name:</label>
         <input
+                autocomplete="Last name"
                 formControlName="lastName"
                 id="lastName"
                 type="text"
-                autocomplete="Last name"
         /><br/>
 
         <div *ngIf="lastName.invalid && (lastName.dirty)" class="alert alert-danger">
@@ -26,10 +26,10 @@
 
         <label for="email">Email Address:</label>
         <input
+                autocomplete="Email address"
                 formControlName="email"
                 id="email"
                 type="email"
-                autocomplete="Email address"
         /><br/>
 
         <div *ngIf="email.invalid && (email.dirty)" class="alert alert-danger">

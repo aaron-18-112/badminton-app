@@ -21,6 +21,7 @@ import {PaymentTableComponent} from "../../components/payment-table/payment-tabl
 })
 export class PaymentComponent {
     menuOpen = false;
+
     toggleMenu(): void {
         this.menuOpen = !this.menuOpen; // Toggle the state of the menu
     }

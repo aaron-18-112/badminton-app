@@ -1,10 +1,10 @@
-*{
+* {
     font-family: Ubuntu;
 
 
 }
 
-#amount{
+#amount {
     display: flex;
     align-content: center;
     flex-direction: column;
@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-h2{
+h2 {
     padding: 10px;
     font-size: 45px;
     color: #df0032;
