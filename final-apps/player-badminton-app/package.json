@@ -31,6 +31,7 @@
     "@angular/compiler-cli": "^18.2.0",
     "@types/express": "^4.17.17",
     "@types/node": "^18.18.0",
+    "beasties": "^0.1.0",
     "typescript": "~5.5.2"
   }
 }
