@@ -1,12 +1,12 @@
 {
-  "name": "angular-badminton-app",
+  "name": "player-badminton-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "serve:ssr:angular-badminton-app": "node dist/angular-badminton-app/server/server.mjs"
+    "serve:ssr:player-badminton-app": "node dist/player-badminton-app/server/server.mjs"
   },
   "private": true,
   "dependencies": {
