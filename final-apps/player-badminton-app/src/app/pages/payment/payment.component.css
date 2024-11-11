@@ -1,0 +1,20 @@
+* {
+    font-family: Ubuntu;
+
+
+}
+
+#amount {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    padding: 10px;
+    font-size: 45px;
+    color: #df0032;
+}
