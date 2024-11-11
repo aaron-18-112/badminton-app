@@ -10,7 +10,7 @@ import {EventInfoComponent} from "../../components/event-info/event-info.compone
 
 
 @Component({
-    selector: 'app-content',
+    selector: 'app-enrol-component',
     standalone: true,
     imports: [
         EnrolTableComponent,
