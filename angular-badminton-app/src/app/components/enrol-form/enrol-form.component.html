@@ -5,6 +5,7 @@
                 formControlName="firstName"
                 id="firstName"
                 type="text"
+                autocomplete="First name"
         /><br/>
 
         <div *ngIf="firstName.invalid && (firstName.dirty)" class="alert alert-danger">
@@ -16,6 +17,7 @@
                 formControlName="lastName"
                 id="lastName"
                 type="text"
+                autocomplete="Last name"
         /><br/>
 
         <div *ngIf="lastName.invalid && (lastName.dirty)" class="alert alert-danger">
@@ -27,6 +29,7 @@
                 formControlName="email"
                 id="email"
                 type="email"
+                autocomplete="Email address"
         /><br/>
 
         <div *ngIf="email.invalid && (email.dirty)" class="alert alert-danger">

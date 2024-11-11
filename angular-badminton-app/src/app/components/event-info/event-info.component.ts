@@ -13,15 +13,10 @@ import {Row} from "../../row";
 })
 export class EventInfoComponent {
 
-
     @Input() rows: Row[] = [];
 
-    get rowCount(): number {
+    get rowCount(): number{
 
         return this.rows.length;
     }
-
-
 }
-
-
