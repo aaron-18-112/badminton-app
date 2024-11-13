@@ -2,7 +2,7 @@
 
 import {PaymentTotal} from "@/app/components/payment-total/payment-total";
 import {PaymentHistory} from "@/app/components/payment-history/payment-history";
-import {SessionCreation} from "@/app/components/session-creation/session-creation";
+import {CreateSession} from "@/app/components/create-session/create-session";
 
 export default function Home() {
 
@@ -17,11 +17,9 @@ export default function Home() {
 
             <div className="content-container">
                 <PaymentTotal />
-                <SessionCreation />
+                <CreateSession />
                 <PaymentHistory />
-
             </div>
-
 
         </div>
     );

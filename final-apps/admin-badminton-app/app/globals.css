@@ -36,11 +36,6 @@ button {
   font-weight: normal;
 }
 
-button:hover {
-  background-color: #d50032;
-  color: white;
-}
-
 .black-text {
   color: black;
 }

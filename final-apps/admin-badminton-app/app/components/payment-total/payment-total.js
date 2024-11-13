@@ -17,6 +17,7 @@ export function PaymentTotal() {
         if (value) {
             value = parseFloat(value).toFixed(2);
             setAmount('£' + value);
+            console.log("Total Cost:", value);
         } else {
             setAmount('£0.00');
         }
@@ -28,6 +29,7 @@ export function PaymentTotal() {
             let value = amount.replace(/[^0-9.]/g, '');
             value = parseFloat(value).toFixed(2);
             setAmount('£' + value);
+            console.log("Total Cost:", value);
         }
     };
 
