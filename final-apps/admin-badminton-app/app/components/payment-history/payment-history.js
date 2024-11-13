@@ -1,33 +1,44 @@
 "use client";
 
-import "./payment-history.css"
+import "./payment-history.css";
+import React, { useState } from "react";
 
-export function PaymentHistory () {
+export function PaymentHistory() {
+    const [paymentHistory, setPaymentHistory] = useState([]);
+
+    const togglePaid = (index) => {
+        const updatedPayments = paymentHistory.map((entry, i) =>
+            i === index ? { ...entry, paid: !entry.paid } : entry
+        );
+        setPaymentHistory(updatedPayments);
+        console.log("Updated Payment History:", updatedPayments);
+    };
+
     return (
         <section className="payment-history">
-            <h3>Payment History</h3><br/>
-            <table style={{width: '100%'}}>
+            <h3>Payment History</h3><br />
+            <table style={{ width: '100%', marginTop: '20px' }}>
                 <thead>
                 <tr>
-                    <th style={{width: '80%'}}>Name</th>
-                    <th>Paid?</th>
+                    <th style={{ width: '60%' }}>Name</th>
+                    <th style={{ width: '40%' }}>Paid</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Name 1</td>
-                    <td><input name="checkbox" type="checkbox"/></td>
-                </tr>
-                <tr>
-                    <td>Name 2</td>
-                    <td><input name="checkbox" type="checkbox"/></td>
-                </tr>
-                <tr>
-                    <td>Name 3</td>
-                    <td><input name="checkbox" type="checkbox"/></td>
-                </tr>
+                {paymentHistory.map((entry, index) => (
+                    <tr key={index}>
+                        <td>{entry.name}</td>
+                        <td>
+                            <input
+                                type="checkbox"
+                                checked={entry.paid}
+                                onChange={() => togglePaid(index)}
+                            />
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
         </section>
-    )
+    );
 }

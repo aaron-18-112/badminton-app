@@ -4,10 +4,10 @@ import './session-creation.css';
 import { useState } from "react";
 
 export function SessionCreation() {
-    // State to control the visibility of the panel
+
     const [isPanelVisible, setIsPanelVisible] = useState(false);
 
-    // Function to toggle the panel visibility
+
     const togglePanel = () => {
         setIsPanelVisible(!isPanelVisible);
     };
