@@ -1,12 +1,11 @@
 "use client";
 
 import './create-session.css';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 export function CreateSession() {
     const [isOpen, setIsOpen] = useState(false);
     const [errors, setErrors] = useState({});
-    const [formSubmitted, setFormSubmitted] = useState(false); // State to trigger table update
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
@@ -42,18 +41,17 @@ export function CreateSession() {
         if (validateForm(formData)) {
             const sessionDate = formData.get('session-date');
             const court1Number = formData.get('court1-number');
-            const court2Number = formData.get('court2-number') || "N/A";
+            const court2Number = formData.get('court2-number');
 
-            // Store the data in localStorage
-            const storedSessions = JSON.parse(localStorage.getItem('sessions')) || [];
-            storedSessions.push({ sessionDate, court1Number, court2Number });
-            localStorage.setItem('sessions', JSON.stringify(storedSessions));
+            console.log("Session Date & Time:", sessionDate);
+            console.log("Court 1 Number:", court1Number);
+            console.log("Court 2 Number (Optional):", court2Number);
 
-            setFormSubmitted(!formSubmitted); // Toggle to inform the PaymentHistory component to re-render
-
-            console.log("Session Saved:", { sessionDate, court1Number, court2Number });
+            setIsOpen(!isOpen);
         }
+
     };
+
 
     return (
         <section className="accordion">
@@ -101,7 +99,7 @@ export function CreateSession() {
                             type="submit"
                             value="Submit"
                             id="submit"
-                        >Submit
+                            >Submit
                         </button>
                     </form>
                 </div>

@@ -5,24 +5,23 @@ import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-
 import {NgClass} from "@angular/common";
 import {PaymentAmountComponent} from "../../components/payment-amount/payment-amount.component";
 import {PaymentTableComponent} from "../../components/payment-table/payment-table.component";
+import {Row} from "../../row";
 
 @Component({
     selector: 'app-payment',
     standalone: true,
-    imports: [
-        NavComponent,
-        EventInfoComponent,
-        HamburgerMenuComponent,
-        NgClass,
-        PaymentAmountComponent,
-        PaymentTableComponent
-    ],
+    imports: [NavComponent, EventInfoComponent, HamburgerMenuComponent, NgClass, PaymentAmountComponent, PaymentTableComponent],
     templateUrl: `payment.component.html`,
 })
 export class PaymentComponent {
+
+    rows: Row[] = [];
     menuOpen = false;
+
 
     toggleMenu(): void {
         this.menuOpen = !this.menuOpen; // Toggle the state of the menu
     }
+
+
 }
