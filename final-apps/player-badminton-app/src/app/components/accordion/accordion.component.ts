@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {EnrolFormComponent} from "../enrol-form/enrol-form.component";
 import {Row} from "../../row";
@@ -17,6 +17,7 @@ export class AccordionComponent {
     isOpen: boolean = false;
 
     @Output() addRow = new EventEmitter<Row>();
+    @Input() rows: Row[] = [];
 
     toggleAccordion() {
         this.isOpen = !this.isOpen;

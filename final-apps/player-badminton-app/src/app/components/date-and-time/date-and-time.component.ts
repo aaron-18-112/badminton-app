@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'app-date-and-time',
-    standalone: true,
-    imports: [],
-    templateUrl: 'date-and-time.component.html',
+    selector: 'app-date-and-time', standalone: true, imports: [], templateUrl: 'date-and-time.component.html',
 })
 export class DateAndTimeComponent implements OnInit {
     date: Date | null = null;
@@ -20,9 +17,7 @@ export class DateAndTimeComponent implements OnInit {
     formatDateAndTime(): void {
         if (this.date) {
             this.formattedDate = this.date.toLocaleDateString('en-GB', {
-                day: '2-digit',
-                month: '2-digit',
-                year: '2-digit'
+                day: '2-digit', month: '2-digit', year: '2-digit'
             });
 
             this.formattedTime = `${this.date.getHours().toString().padStart(2, '0')}:${this.date.getMinutes().toString().padStart(2, '0')}`;

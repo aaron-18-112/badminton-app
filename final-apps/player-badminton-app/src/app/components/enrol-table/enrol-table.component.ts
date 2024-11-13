@@ -19,5 +19,7 @@ export class EnrolTableComponent {
 
     handleRemoveRow(index: number): void {
         this.removeRow.emit(index);
+        window.location.reload();
     }
+
 }

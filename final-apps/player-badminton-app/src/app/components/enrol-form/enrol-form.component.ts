@@ -1,7 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from "@angular/common";
 import {Row} from "../../row";
+import {LocalStorageService} from "../../local-storage.service";
 
 @Component({
     selector: 'app-enrol-form',
@@ -18,11 +19,15 @@ export class EnrolFormComponent implements OnInit {
     enrolForm!: FormGroup;
     isOpen = true;
 
+
+    @Input() rows: Row[] = [];
     @Output() addRow = new EventEmitter<Row>();
     @Output() formSubmit = new EventEmitter<any>();
 
-    constructor(private formBuilder: FormBuilder) {
-    }
+    constructor(
+        private localStorageService: LocalStorageService,
+        private formBuilder: FormBuilder
+    ) {}
 
     get firstName() {
         return this.enrolForm.get('firstName')!;
@@ -55,6 +60,7 @@ export class EnrolFormComponent implements OnInit {
             this.formSubmit.emit(this.enrolForm.value);
             this.addRow.emit(row);
             this.resetForm();
+            window.location.reload();
         }
     }
 
