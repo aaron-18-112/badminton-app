@@ -1,16 +1,14 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from "@angular/common";
 import {Row} from "../../row";
+import {LocalStorageService} from "../../local-storage.service";
 
 @Component({
     selector: 'app-enrol-form',
     templateUrl: './enrol-form.component.html',
     standalone: true,
-    imports: [
-        NgIf,
-        ReactiveFormsModule
-    ],
+    imports: [NgIf, ReactiveFormsModule],
     styleUrls: ['./enrol-form.component.css']
 })
 export class EnrolFormComponent implements OnInit {
@@ -18,10 +16,12 @@ export class EnrolFormComponent implements OnInit {
     enrolForm!: FormGroup;
     isOpen = true;
 
+
+    @Input() rows: Row[] = [];
     @Output() addRow = new EventEmitter<Row>();
     @Output() formSubmit = new EventEmitter<any>();
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private localStorageService: LocalStorageService, private formBuilder: FormBuilder) {
     }
 
     get firstName() {
@@ -48,13 +48,13 @@ export class EnrolFormComponent implements OnInit {
         if (this.enrolForm.valid) {
             const fullName = `${this.enrolForm.value.firstName} ${this.enrolForm.value.lastName}`;
             const row: Row = {
-                name: fullName,
-                email: this.enrolForm.value.email
+                name: fullName, email: this.enrolForm.value.email
             };
 
             this.formSubmit.emit(this.enrolForm.value);
             this.addRow.emit(row);
             this.resetForm();
+            window.location.reload();
         }
     }
 

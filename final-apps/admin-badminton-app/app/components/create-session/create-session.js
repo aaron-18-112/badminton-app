@@ -46,7 +46,10 @@ export function CreateSession() {
             console.log("Session Date & Time:", sessionDate);
             console.log("Court 1 Number:", court1Number);
             console.log("Court 2 Number (Optional):", court2Number);
+
+            setIsOpen(!isOpen);
         }
+
     };
 
 
