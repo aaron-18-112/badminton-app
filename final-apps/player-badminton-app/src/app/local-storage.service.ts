@@ -6,35 +6,35 @@ import {Row} from "./row";
 })
 export class LocalStorageService {
 
+    constructor() {
+    }
+
     setItem(key: string, value: any): void {
-        localStorage.setItem(key, JSON.stringify(value));
+        if (this.isBrowser()) {
+            localStorage.setItem(key, JSON.stringify(value));
+        }
     }
 
     getItem<T>(key: string): T | null {
-        const item = localStorage.getItem(key);
-        return item ? JSON.parse(item) : null;
+        if (this.isBrowser()) {
+            const item = localStorage.getItem(key);
+            return item ? JSON.parse(item) : null;
+        }
+        return null;
     }
 
     loadRows(): Row[] {
-        const savedRows = localStorage.getItem('rows');
-        if (savedRows) {
-            return JSON.parse(savedRows);
+        if (this.isBrowser()) {
+            const savedRows = localStorage.getItem('rows');
+            if (savedRows) {
+                return JSON.parse(savedRows);
+            }
         }
-        return [];  // Return an empty array if no rows found in localStorage
+        return [];
     }
 
-
-    saveRows(rows: Row[]): void {
-        localStorage.setItem('rows', JSON.stringify(rows));
-    }
-
-
-    removeItem(key: string): void {
-        localStorage.removeItem(key);
-    }
-
-    clear(): void {
-        localStorage.clear();
+    private isBrowser(): boolean {
+        return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
     }
 
 }
