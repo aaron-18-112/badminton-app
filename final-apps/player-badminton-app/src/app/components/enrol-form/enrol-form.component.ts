@@ -27,7 +27,8 @@ export class EnrolFormComponent implements OnInit {
     constructor(
         private localStorageService: LocalStorageService,
         private formBuilder: FormBuilder
-    ) {}
+    ) {
+    }
 
     get firstName() {
         return this.enrolForm.get('firstName')!;

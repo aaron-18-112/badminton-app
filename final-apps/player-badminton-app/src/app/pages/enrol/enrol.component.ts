@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EnrolTableComponent} from "../../components/enrol-table/enrol-table.component";
 import {NgClass} from '@angular/common';
 import {Row} from "../../row";

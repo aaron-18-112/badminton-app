@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {NavComponent} from "../../components/nav/nav.component";
 import {EventInfoComponent} from "../../components/event-info/event-info.component";
 import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-menu.component";
@@ -6,7 +6,6 @@ import {NgClass} from "@angular/common";
 import {PaymentAmountComponent} from "../../components/payment-amount/payment-amount.component";
 import {PaymentTableComponent} from "../../components/payment-table/payment-table.component";
 import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
 
 @Component({
     selector: 'app-payment',
@@ -23,7 +22,6 @@ export class PaymentComponent {
     toggleMenu(): void {
         this.menuOpen = !this.menuOpen; // Toggle the state of the menu
     }
-
 
 
 }
