@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'app-date-and-time', standalone: true, imports: [], templateUrl: 'date-and-time.component.html',
+    selector: 'app-date-and-time',
+    standalone: true,
+    imports: [],
+    templateUrl: 'date-and-time.component.html',
 })
 export class DateAndTimeComponent implements OnInit {
     date: Date | null = null;

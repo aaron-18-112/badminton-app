@@ -8,10 +8,7 @@ import {LocalStorageService} from "../../local-storage.service";
     selector: 'app-enrol-form',
     templateUrl: './enrol-form.component.html',
     standalone: true,
-    imports: [
-        NgIf,
-        ReactiveFormsModule
-    ],
+    imports: [NgIf, ReactiveFormsModule],
     styleUrls: ['./enrol-form.component.css']
 })
 export class EnrolFormComponent implements OnInit {
@@ -24,10 +21,7 @@ export class EnrolFormComponent implements OnInit {
     @Output() addRow = new EventEmitter<Row>();
     @Output() formSubmit = new EventEmitter<any>();
 
-    constructor(
-        private localStorageService: LocalStorageService,
-        private formBuilder: FormBuilder
-    ) {
+    constructor(private localStorageService: LocalStorageService, private formBuilder: FormBuilder) {
     }
 
     get firstName() {
@@ -54,8 +48,7 @@ export class EnrolFormComponent implements OnInit {
         if (this.enrolForm.valid) {
             const fullName = `${this.enrolForm.value.firstName} ${this.enrolForm.value.lastName}`;
             const row: Row = {
-                name: fullName,
-                email: this.enrolForm.value.email
+                name: fullName, email: this.enrolForm.value.email
             };
 
             this.formSubmit.emit(this.enrolForm.value);

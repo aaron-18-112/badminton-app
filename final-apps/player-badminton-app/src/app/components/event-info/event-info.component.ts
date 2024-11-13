@@ -6,9 +6,7 @@ import {LocalStorageService} from "../../local-storage.service";
 @Component({
     selector: 'app-event-info',
     standalone: true,
-    imports: [
-        DateAndTimeComponent
-    ],
+    imports: [DateAndTimeComponent],
     templateUrl: `event-info.component.html`,
     styleUrls: [`event-info.component.css`]
 })

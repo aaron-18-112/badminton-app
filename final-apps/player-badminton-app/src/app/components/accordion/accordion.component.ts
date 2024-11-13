@@ -6,10 +6,7 @@ import {Row} from "../../row";
 @Component({
     selector: 'app-accordion',
     standalone: true,
-    imports: [
-        EnrolFormComponent,
-        CommonModule
-    ],
+    imports: [EnrolFormComponent, CommonModule],
     templateUrl: `accordion.component.html`,
     styleUrls: ['accordion.component.css']
 })
@@ -26,8 +23,7 @@ export class AccordionComponent {
     handleFormSubmit(formData: any): void {
 
         const row: Row = {
-            name: `${formData.firstName} ${formData.lastName}`,
-            email: formData.email,
+            name: `${formData.firstName} ${formData.lastName}`, email: formData.email,
         };
         this.addRow.emit(row);
         this.toggleAccordion();

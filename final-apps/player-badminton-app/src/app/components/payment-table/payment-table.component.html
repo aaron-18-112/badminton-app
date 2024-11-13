@@ -6,18 +6,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Name 1</td>
-        <td><input name="checkbox" type="checkbox"></td>
+    <tr *ngFor="let row of rows; let i = index">
+        <td>{{ row.name }}</td>
+        <td>
+            <input disabled name="my_checkbox" type="checkbox">
+        </td>
     </tr>
-    <tr>
-        <td>Name 2</td>
-        <td><input name="checkbox" type="checkbox"></td>
-    </tr>
-    <tr>
-        <td>Name 3</td>
-        <td><input name="checkbox" type="checkbox"></td>
-    </tr>
-
     </tbody>
 </table>
