@@ -3,6 +3,7 @@ import {DateAndTimeComponent} from "../date-and-time/date-and-time.component";
 import {Row} from "../../row";
 import {LocalStorageService} from "../../local-storage.service";
 
+
 @Component({
     selector: 'app-event-info',
     standalone: true,
