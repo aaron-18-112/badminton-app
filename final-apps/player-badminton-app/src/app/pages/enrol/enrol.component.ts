@@ -6,7 +6,7 @@ import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-
 import {AccordionComponent} from "../../components/accordion/accordion.component";
 import {NavComponent} from "../../components/nav/nav.component";
 import {EventInfoComponent} from "../../components/event-info/event-info.component";
-import {SessionStorageService} from "../../session-storage.service";
+import {LocalStorageService} from "../../local-storage.service";
 
 
 @Component({
@@ -19,12 +19,12 @@ export class EnrolComponent implements OnInit {
     menuOpen = false;
     rows: Row[] = [];
 
-    constructor(private sessionStorageService: SessionStorageService) {
+    constructor(private localStorageService: LocalStorageService) {
     }
 
     ngOnInit(): void {
-        this.loadRowsFromsessionStorage();
-        this.sessionStorageService.setItem('rowCount', this.rows.length);
+        this.loadRowsFromlocalStorage();
+        this.localStorageService.setItem('rowCount', this.rows.length);
     }
 
     toggleMenu(): void {
@@ -35,26 +35,26 @@ export class EnrolComponent implements OnInit {
     handleRowAddition(row: Row) {
         this.rows.push(row); // Add the row object to the rows array
         console.log('New Row Added:', row);
-        this.saveRowsTosessionStorage()
+        this.saveRowsTolocalStorage()
 
     }
 
     handleRowRemoval(index: number) {
         this.rows.splice(index, 1);  // Remove the row at the specified index
-        this.saveRowsTosessionStorage()
+        this.saveRowsTolocalStorage()
     }
 
 
-    private loadRowsFromsessionStorage(): void {
-        const savedRows = this.sessionStorageService.getItem<Row[]>('rows');
+    private loadRowsFromlocalStorage(): void {
+        const savedRows = this.localStorageService.getItem<Row[]>('rows');
         if (savedRows) {
             this.rows = savedRows;
-            console.log('Rows loaded from sessionStorage:', this.rows);
+            console.log('Rows loaded from localStorage:', this.rows);
         }
     }
 
-    private saveRowsTosessionStorage(): void {
-        this.sessionStorageService.setItem('rows', this.rows);
+    private saveRowsTolocalStorage(): void {
+        this.localStorageService.setItem('rows', this.rows);
     }
 
 

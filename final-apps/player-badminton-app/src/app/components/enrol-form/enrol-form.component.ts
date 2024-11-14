@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from "@angular/common";
 import {Row} from "../../row";
-import {SessionStorageService} from "../../session-storage.service";
+import {LocalStorageService} from "../../local-storage.service";
 
 @Component({
     selector: 'app-enrol-form',
@@ -21,7 +21,7 @@ export class EnrolFormComponent implements OnInit {
     @Output() addRow = new EventEmitter<Row>();
     @Output() formSubmit = new EventEmitter<any>();
 
-    constructor(private sessionStorageService: SessionStorageService, private formBuilder: FormBuilder) {
+    constructor(private localStorageService: LocalStorageService, private formBuilder: FormBuilder) {
     }
 
     get firstName() {

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgStyle} from "@angular/common";
 import {Row} from "../../row";
-import {SessionStorageService} from "../../session-storage.service";
+import {LocalStorageService} from "../../local-storage.service";
+
 
 @Component({
     selector: 'app-payment-table',
@@ -13,11 +14,11 @@ import {SessionStorageService} from "../../session-storage.service";
 export class PaymentTableComponent implements OnInit {
     rows: Row[] = [];
 
-    constructor(private sessionStorageService: SessionStorageService) {
+    constructor(private localStorageService: LocalStorageService) {
     }
 
     ngOnInit(): void {
-        this.rows = this.sessionStorageService.loadRows();
+        this.rows = this.localStorageService.loadRows();
     }
 
 }

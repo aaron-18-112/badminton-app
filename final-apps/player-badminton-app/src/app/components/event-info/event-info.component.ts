@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {DateAndTimeComponent} from "../date-and-time/date-and-time.component";
 import {Row} from "../../row";
-import {SessionStorageService} from "../../session-storage.service";
+import {LocalStorageService} from "../../local-storage.service";
 
 
 @Component({
@@ -15,11 +15,11 @@ export class EventInfoComponent {
 
     @Input() rows: Row[] = [];
 
-    constructor(private sessionStorageService: SessionStorageService) {
+    constructor(private localStorageService: LocalStorageService) {
     }
 
     get rowCount(): number {
-        return this.sessionStorageService.getItem('rowCount') ?? 0;
+        return this.localStorageService.getItem('rowCount') ?? 0;
     }
 
 
