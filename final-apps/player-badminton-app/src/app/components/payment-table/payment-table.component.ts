@@ -3,6 +3,7 @@ import {NgForOf, NgStyle} from "@angular/common";
 import {Row} from "../../row";
 import {LocalStorageService} from "../../local-storage.service";
 
+
 @Component({
     selector: 'app-payment-table',
     standalone: true,

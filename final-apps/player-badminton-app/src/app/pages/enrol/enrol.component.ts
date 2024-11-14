@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {EnrolTableComponent} from "../../components/enrol-table/enrol-table.component";
 import {NgClass} from '@angular/common';
 import {Row} from "../../row";
-import {DateAndTimeComponent} from "../../components/date-and-time/date-and-time.component";
 import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-menu.component";
 import {AccordionComponent} from "../../components/accordion/accordion.component";
 import {NavComponent} from "../../components/nav/nav.component";
@@ -13,7 +12,7 @@ import {LocalStorageService} from "../../local-storage.service";
 @Component({
     selector: 'app-enrol-component',
     standalone: true,
-    imports: [EnrolTableComponent, DateAndTimeComponent, NgClass, HamburgerMenuComponent, AccordionComponent, NavComponent, EventInfoComponent],
+    imports: [EnrolTableComponent, NgClass, HamburgerMenuComponent, AccordionComponent, NavComponent, EventInfoComponent],
     templateUrl: `enrol.component.html`,
 })
 export class EnrolComponent implements OnInit {
@@ -24,7 +23,7 @@ export class EnrolComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.loadRowsFromLocalStorage();
+        this.loadRowsFromlocalStorage();
         this.localStorageService.setItem('rowCount', this.rows.length);
     }
 
@@ -36,17 +35,17 @@ export class EnrolComponent implements OnInit {
     handleRowAddition(row: Row) {
         this.rows.push(row); // Add the row object to the rows array
         console.log('New Row Added:', row);
-        this.saveRowsToLocalStorage()
+        this.saveRowsTolocalStorage()
 
     }
 
     handleRowRemoval(index: number) {
         this.rows.splice(index, 1);  // Remove the row at the specified index
-        this.saveRowsToLocalStorage()
+        this.saveRowsTolocalStorage()
     }
 
 
-    private loadRowsFromLocalStorage(): void {
+    private loadRowsFromlocalStorage(): void {
         const savedRows = this.localStorageService.getItem<Row[]>('rows');
         if (savedRows) {
             this.rows = savedRows;
@@ -54,7 +53,7 @@ export class EnrolComponent implements OnInit {
         }
     }
 
-    private saveRowsToLocalStorage(): void {
+    private saveRowsTolocalStorage(): void {
         this.localStorageService.setItem('rows', this.rows);
     }
 
