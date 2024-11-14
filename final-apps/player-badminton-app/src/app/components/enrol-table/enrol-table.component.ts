@@ -1,7 +1,7 @@
 import {NgFor, NgStyle} from '@angular/common';
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
+import {SessionStorageService} from "../../session-storage.service";
 
 @Component({
     selector: 'app-table',
@@ -16,11 +16,11 @@ export class EnrolTableComponent implements OnInit {
     @Output() removeRow = new EventEmitter<number>();
 
 
-    constructor(private localStorageService: LocalStorageService) {
+    constructor(private sessionStorageService: SessionStorageService) {
     }
 
     ngOnInit(): void {
-        this.rows = this.localStorageService.loadRows();
+        this.rows = this.sessionStorageService.loadRows();
     }
 
     handleRemoveRow(index: number): void {
