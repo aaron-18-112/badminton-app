@@ -8,8 +8,8 @@
                 type="text"
         /><br/>
 
-        <div *ngIf="firstName.invalid && (firstName.dirty)" class="alert alert-danger">
-            <div *ngIf="firstName.hasError('required')">First Name is required.</div>
+        <div *ngIf="firstName.invalid && (firstName.touched)" class="alert alert-danger">
+            <div *ngIf="firstName.hasError('required')" data-testid="firstName-required">First Name is required.</div>
         </div>
 
         <label for="lastName">Last Name:</label>
@@ -20,8 +20,8 @@
                 type="text"
         /><br/>
 
-        <div *ngIf="lastName.invalid && (lastName.dirty)" class="alert alert-danger">
-            <div *ngIf="lastName.hasError('required')">Last Name is required.</div>
+        <div *ngIf="lastName.invalid && (lastName.touched)" class="alert alert-danger">
+            <div *ngIf="lastName.hasError('required')" data-testid="lastName-required">Last Name is required.</div>
         </div>
 
         <label for="email">Email Address:</label>
@@ -32,11 +32,11 @@
                 type="email"
         /><br/>
 
-        <div *ngIf="email.invalid && (email.dirty)" class="alert alert-danger">
-            <div *ngIf="email.hasError('required')">Email is required.</div>
-            <div *ngIf="email.hasError('pattern')">Please enter a valid email address.</div>
+        <div *ngIf="email.invalid && (email.touched)" class="alert alert-danger">
+            <div *ngIf="email.hasError('required')" data-testid="email-required">Email is required.</div>
+            <div *ngIf="email.hasError('pattern')" data-testid="email-validation">Please enter a valid email address.</div>
         </div>
 
-        <button [disabled]="!enrolForm.valid" data-testid="submit-button" id="submit" type="submit">Submit</button>
+        <button data-testid="submit-button" id="submit-button" type="submit">Submit</button>
     </div>
 </form>
