@@ -8,8 +8,8 @@
     <tbody>
     <tr *ngFor="let row of rows; let i = index">
         <td>{{ row.name }}</td>
-        <td>
-            <button (click)="handleRemoveRow(i)" id="remove-button">
+        <td data-testid="remove-button">
+            <button (click)="handleRemoveRow(i)"  id="remove-button" >
                 <img alt="remove" class=bin-icon src="bin-icon.svg"/>
             </button>
         </td>

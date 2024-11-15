@@ -1,5 +1,4 @@
 import {Page} from '@playwright/test';
-import {delay, timeout} from "rxjs";
 
 export class EnrolPage {
     readonly page: Page;
@@ -9,7 +8,7 @@ export class EnrolPage {
     }
 
     async navigateToEnrolPage() {
-        await this.page.goto('http://localhost:4200/enrol');
+        await this.page.goto('./enrol');
     }
 
     async enterFirstName (firstName: string = 'test') {
@@ -45,7 +44,7 @@ export class EnrolPage {
             await this.enterLastName();
             await this.enterEmail();
             await this.clickSubmitButton()
-            await this.page.waitForTimeout(1000)
+            await this.page.waitForTimeout(760)
         }
 
     }
@@ -53,6 +52,21 @@ export class EnrolPage {
    async getNumberOfPlayers() {
        const numberOfPlayersString = this.page.getByTestId('numberOfPlayers').innerText();
        return parseInt(await numberOfPlayersString);
+   }
+
+    async clickRemoveButton () {
+        await this.page.getByRole('button', { name: 'remove' }).hover();
+        await this.page.getByRole('button', { name: 'remove' }).click();
+    }
+
+   async removeMultiplePlayers (numberOfPlayers: number) {
+        await this.enrolMultiplePlayers(numberOfPlayers);
+
+        for (let i = 1; i <= numberOfPlayers; i++) {
+            await this.clickRemoveButton();
+            await this.page.waitForTimeout(760)
+        }
+
    }
 
 }
