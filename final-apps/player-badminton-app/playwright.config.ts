@@ -1,5 +1,4 @@
 import {defineConfig, devices} from '@playwright/test';
-import {config} from "rxjs";
 
 /**
  * Read environment variables from file.
@@ -17,8 +16,6 @@ export default defineConfig({
         command: 'ng serve',
         url: 'http://localhost:4200',
         reuseExistingServer: !process.env['CI'],
-        stdout: 'ignore',
-        stderr: 'pipe',
         timeout: 10000,
     },
     use: {
@@ -33,9 +30,9 @@ export default defineConfig({
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env['CI'],
     /* Retry on CI only */
-    retries: process.env['CI'] ? 2 : 0,
+    retries: process.env['CI'] ? 2 : 2,
     /* Opt out of parallel tests on CI. */
-    workers: process.env['CI'] ? 6 : 6,
+    workers: process.env['CI'] ? 10 : 10,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: 'html',
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -57,32 +54,25 @@ export default defineConfig({
             name: 'webkit',
             use: {...devices['Desktop Safari']},
         },
-
-        /* Test against mobile viewports. */
+        //
         // {
-        //   name: 'Mobile Chrome',
-        //   use: { ...devices['Pixel 5'] },
+        //     name: 'Mobile Chrome',
+        //     use: {...devices['Pixel 5']},
         // },
         // {
-        //   name: 'Mobile Safari',
-        //   use: { ...devices['iPhone 12'] },
+        //     name: 'Mobile Safari',
+        //     use: {...devices['iPhone 12']},
         // },
 
         /* Test against branded browsers. */
         // {
-        //   name: 'Microsoft Edge',
-        //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+        //     name: 'Microsoft Edge',
+        //     use: {...devices['Desktop Edge'], channel: 'msedge'},
         // },
         // {
-        //   name: 'Google Chrome',
-        //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+        //     name: 'Google Chrome',
+        //     use: {...devices['Desktop Chrome'], channel: 'chrome'},
         // },
     ],
 
-    /* Run your local dev server before starting the tests */
-    // webServer: {
-    //   command: 'npm run start',
-    //   url: 'http://127.0.0.1:3000',
-    //   reuseExistingServer: !process.env.CI,
-    // },
 });

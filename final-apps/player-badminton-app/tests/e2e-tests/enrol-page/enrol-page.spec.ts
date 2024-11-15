@@ -28,12 +28,30 @@ test.describe("Enrol Page", () => {
     test('remove multiple players - expect total to drop to 0', async () => {
         test.slow();
         //Arrange
-        const numberOfPlayers = 20
+        const numberOfPlayers = 10
         //Act
+        await enrolPage.enrolMultiplePlayers(numberOfPlayers);
         await enrolPage.removeMultiplePlayers(numberOfPlayers);
         const numberOfPlayersLabel = await enrolPage.getNumberOfPlayers();
         //Assert
         expect(numberOfPlayersLabel).toEqual(0);
+    })
+
+    test('check enrol table values are displaying on the payment table', async () => {
+        test.slow()
+        //Arrange
+        const numberOfPlayers = 10
+        //Act
+        await enrolPage.enrolMultiplePlayers(numberOfPlayers);
+        await enrolPage.getEnrolTableData();
+        const enrolTableData = await enrolPage.getEnrolTableData();
+        await enrolPage.navigateToPaymentPage();
+        await enrolPage.getPaymentTableData()
+        const paymentTableData = await enrolPage.getPaymentTableData();
+        //Assert
+        expect(enrolTableData.length).toEqual(paymentTableData.length);
+        expect (JSON.stringify(enrolTableData) === JSON.stringify(paymentTableData))
+
     })
 
 })
