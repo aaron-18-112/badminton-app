@@ -14,13 +14,26 @@ test.describe("Enrol Page", () => {
         await expect(page).toHaveTitle(/AJ Bell ShuttleBell/);
     });
 
+    test('form input data matches data displayed in table', async () => {
+
+        //Act
+        const formNameValue = await enrolPage.formInput()
+        const tableNameValue = await enrolPage.tableOutput()
+
+        //Assert
+        expect (formNameValue).toEqual(tableNameValue);
+
+    })
+
     test('enrol multiple players - expect correct number of players to be added', async () => {
         test.slow();
         //Arrange
         const numberOfPlayers = 20 //Change number of players
+
         //Act
         await enrolPage.enrolMultiplePlayers(numberOfPlayers);
         const numberOfPlayersLabel = await enrolPage.getNumberOfPlayers();
+
         //Assert
         expect(numberOfPlayersLabel).toEqual(numberOfPlayers);
     })
@@ -29,10 +42,12 @@ test.describe("Enrol Page", () => {
         test.slow();
         //Arrange
         const numberOfPlayers = 10
+
         //Act
         await enrolPage.enrolMultiplePlayers(numberOfPlayers);
         await enrolPage.removeMultiplePlayers(numberOfPlayers);
         const numberOfPlayersLabel = await enrolPage.getNumberOfPlayers();
+
         //Assert
         expect(numberOfPlayersLabel).toEqual(0);
     })
@@ -41,16 +56,17 @@ test.describe("Enrol Page", () => {
         test.slow()
         //Arrange
         const numberOfPlayers = 10
+
         //Act
         await enrolPage.enrolMultiplePlayers(numberOfPlayers);
-        await enrolPage.getEnrolTableData();
         const enrolTableData = await enrolPage.getEnrolTableData();
+
         await enrolPage.navigateToPaymentPage();
-        await enrolPage.getPaymentTableData()
         const paymentTableData = await enrolPage.getPaymentTableData();
+
         //Assert
         expect(enrolTableData.length).toEqual(paymentTableData.length);
-        expect (JSON.stringify(enrolTableData) === JSON.stringify(paymentTableData))
+        expect(JSON.stringify(enrolTableData)).toEqual(JSON.stringify(paymentTableData));
 
     })
 

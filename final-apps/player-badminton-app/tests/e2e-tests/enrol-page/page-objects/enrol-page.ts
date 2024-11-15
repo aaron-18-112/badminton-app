@@ -15,6 +15,25 @@ export class EnrolPage {
         await this.page.goto('./payment');
     }
 
+    async formInput () {
+        await this.clickJoinButton();
+        await this.page.waitForTimeout(800)
+        await this.page.getByLabel('First Name:').click();
+        await this.page.getByLabel('First Name:').fill('Test');
+        await this.page.getByLabel('Last Name:').click();
+        await this.page.getByLabel('Last Name:').fill('User');
+        await this.page.getByLabel('Email Address:').click();
+        await this.page.getByLabel('Email Address:').fill('test@ajbell.co.uk');
+        await this.clickSubmitButton()
+        await this.page.waitForTimeout(800)
+        return ('Test User');
+    }
+
+    async tableOutput () {
+        const name = await this.page.locator('table td:first-child').allInnerTexts();
+        return name.join('');
+    }
+
     async enterFirstName (firstName: string = 'test') {
         await this.page.getByLabel('First Name:').click();
         await this.page.getByLabel('First Name:').fill(firstName);
@@ -31,13 +50,11 @@ export class EnrolPage {
     }
 
     async clickJoinButton () {
-        this.page.locator('button#join-button');
         await this.page.getByTestId('join-button').hover();
         await this.page.getByTestId('join-button').click();
     }
 
     async clickSubmitButton () {
-        this.page.locator('button#submit-button');
         await this.page.getByTestId('submit-button').hover();
         await this.page.getByTestId('submit-button').click();
     }
@@ -62,13 +79,11 @@ export class EnrolPage {
    }
 
     async clickFirstRemoveButton () {
-        this.page.locator('button#remove-button');
         await this.page.getByRole('button', { name: 'remove' }).first().hover();
         await this.page.getByRole('button', { name: 'remove' }).first().click();
     }
 
     async clickLastRemoveButton () {
-        this.page.locator('button#remove-button');
         await this.page.getByRole('button', { name: 'remove' }).last().hover();
         await this.page.getByRole('button', { name: 'remove' }).last().click();
     }
@@ -95,7 +110,6 @@ export class EnrolPage {
         const paymentColumn = this.page.locator('table td:first-child');
         return await paymentColumn.allInnerTexts();
     }
-
 
 
 }
