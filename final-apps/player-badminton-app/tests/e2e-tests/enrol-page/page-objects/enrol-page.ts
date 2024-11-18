@@ -109,5 +109,47 @@ export class EnrolPage {
         return await paymentColumn.allInnerTexts();
     }
 
+    async saveWithNoFirstName () {
+        await this.enterLastName();
+        await this.enterEmail();
+        await this.clickSubmitButton();
+    }
+
+    async getFirstNameError () {
+        this.page.getByTestId('firstName-required');
+    }
+
+
+    async saveWithNoLastName () {
+        await this.enterFirstName();
+        await this.enterEmail();
+        await this.clickSubmitButton();
+    }
+
+    async getLastNameError () {
+        this.page.getByTestId('lastName-required');
+    }
+
+    async saveWithNoEmail () {
+        await this.enterFirstName();
+        await this.enterLastName();
+        await this.clickSubmitButton();
+    }
+
+    async getNoEmailError () {
+        this.page.getByTestId('email-required');
+    }
+
+    async saveWithInvalidEmail () {
+        await this.enterFirstName();
+        await this.enterLastName();
+        await this.page.getByLabel('Email Address:').click();
+        await this.page.getByLabel('Email Address:').fill('invalidEmail');
+        await this.clickSubmitButton();
+    }
+
+    async getInvalidEmailError () {
+        this.page.getByTestId('email-validation');
+    }
 
 }
