@@ -16,7 +16,7 @@ test.describe("Enrol Form Error Validation", () => {
         await enrolPage.saveWithNoFirstName();
 
         //Act
-        const errorMessage = enrolPage.getFirstNameError();
+        const errorMessage = await enrolPage.getFirstNameError();
 
         //Assert
         expect(errorMessage).toContain('First Name is required.');
@@ -28,7 +28,7 @@ test.describe("Enrol Form Error Validation", () => {
         await enrolPage.saveWithNoLastName();
 
         //Act
-        const errorMessage = enrolPage.getLastNameError();
+        const errorMessage = await enrolPage.getLastNameError();
 
         //Assert
         expect(errorMessage).toContain('Last Name is required.');
@@ -40,7 +40,7 @@ test.describe("Enrol Form Error Validation", () => {
         await enrolPage.saveWithNoEmail();
 
         //Act
-        const errorMessage = enrolPage.getNoEmailError()
+        const errorMessage = await enrolPage.getNoEmailError()
 
         //Assert
         expect(errorMessage).toContain('Email is required.');
@@ -52,7 +52,7 @@ test.describe("Enrol Form Error Validation", () => {
         await enrolPage.saveWithInvalidEmail();
 
         //Act
-        const errorMessage = enrolPage.getInvalidEmailError()
+        const errorMessage = await enrolPage.getInvalidEmailError()
 
         //Assert
         expect(errorMessage).toContain('Please enter a valid email address.');
