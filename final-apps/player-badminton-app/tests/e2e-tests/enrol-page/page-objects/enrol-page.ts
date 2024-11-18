@@ -116,7 +116,7 @@ export class EnrolPage {
     }
 
     async getFirstNameError () {
-        this.page.getByTestId('firstName-required');
+        return this.page.getByTestId('firstName-required').textContent();
     }
 
 
@@ -127,7 +127,7 @@ export class EnrolPage {
     }
 
     async getLastNameError () {
-        this.page.getByTestId('lastName-required');
+        return this.page.getByTestId('lastName-required').textContent();
     }
 
     async saveWithNoEmail () {
@@ -137,7 +137,7 @@ export class EnrolPage {
     }
 
     async getNoEmailError () {
-        this.page.getByTestId('email-required');
+        return this.page.getByTestId('email-required').textContent();
     }
 
     async saveWithInvalidEmail () {
@@ -149,7 +149,7 @@ export class EnrolPage {
     }
 
     async getInvalidEmailError () {
-        this.page.getByTestId('email-validation');
+        return this.page.getByTestId('email-validation').textContent();
     }
 
 }
