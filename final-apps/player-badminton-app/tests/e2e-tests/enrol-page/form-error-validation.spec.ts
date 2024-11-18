@@ -1,62 +1,64 @@
-import {FormErrorValidation} from "./page-objects/form-error-validation";
+import {EnrolPage} from "./page-objects/enrol-page";
 import {expect, test} from "@playwright/test";
 
 test.describe("Enrol Form Error Validation", () => {
 
-    let formErrorValidation: FormErrorValidation;
+    let enrolPage: EnrolPage;
 
     test.beforeEach(async ({page}) => {
-        formErrorValidation = new FormErrorValidation(page);
-        await formErrorValidation.navigateToEnrolPage();
-        await formErrorValidation.clickJoinButton();
+        enrolPage = new EnrolPage(page);
+        await enrolPage.navigateToEnrolPage();
+        await enrolPage.clickJoinButton();
     })
 
-    test('no first name', async ({page}) => {
+    test('error should show when first name is empty', async ({page}) => {
         //Arrange
-        const errorMessage = page.getByTestId('firstName-required');
+        const errorMessage = enrolPage.getFirstNameError();
 
         //Act
-        await formErrorValidation.noFirstName();
+        await enrolPage.saveWithNoFirstName();
 
         //Assert
-        await expect(errorMessage).toContainText('First Name is required.');
+        expect(errorMessage).toContain('First Name is required.');
 
     })
 
-    test('no last name', async ({page}) => {
+    test('error should show when last name is empty', async ({page}) => {
         //Arrange
-        const errorMessage = page.getByTestId('lastName-required');
+        const errorMessage = enrolPage.getLastNameError();
 
         //Act
-        await formErrorValidation.noLastName();
+        await enrolPage.saveWithNoLastName();
 
         //Assert
-        await expect(errorMessage).toContainText('Last Name is required.');
+        expect(errorMessage).toContain('Last Name is required.');
 
     })
 
-    test('no email', async ({page}) => {
+    test('error should show when email address is empty', async ({page}) => {
         //Arrange
-        const errorMessage = page.getByTestId('email-required');
+        const errorMessage = enrolPage.getNoEmailError()
 
         //Act
-        await formErrorValidation.noEmail();
+        await enrolPage.saveWithNoEmail();
 
         //Assert
-        await expect(errorMessage).toContainText('Email is required.');
+        expect(errorMessage).toContain('Email is required.');
 
     })
 
-    test('invalid email', async ({page}) => {
+    test('error should show when email address is invalid', async ({page}) => {
         //Arrange
-        const errorMessage = page.getByTestId('email-validation');
+        const errorMessage = enrolPage.getInvalidEmailError()
 
         //Act
-        await formErrorValidation.invalidEmail();
+        await enrolPage.saveWithInvalidEmail();
 
         //Assert
-        await expect(errorMessage).toContainText('Please enter a valid email address.');
+        expect(errorMessage).toContain('Please enter a valid email address.');
 
     })
+
+    //Edge Cases: Numbers in firstName/lastName - Currently Allowed - Potentially update form validation in the future
 
 })
