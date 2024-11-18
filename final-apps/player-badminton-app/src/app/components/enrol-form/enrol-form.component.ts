@@ -45,6 +45,8 @@ export class EnrolFormComponent implements OnInit {
     }
 
     onSubmit(): void {
+        this.enrolForm.markAllAsTouched();
+
         if (this.enrolForm.valid) {
             const fullName = `${this.enrolForm.value.firstName} ${this.enrolForm.value.lastName}`;
             const row: Row = {
