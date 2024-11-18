@@ -13,10 +13,10 @@ test.describe("Enrol Form Error Validation", () => {
 
     test('error should show when first name is empty', async ({page}) => {
         //Arrange
-        const errorMessage = enrolPage.getFirstNameError();
+        await enrolPage.saveWithNoFirstName();
 
         //Act
-        await enrolPage.saveWithNoFirstName();
+        const errorMessage = enrolPage.getFirstNameError();
 
         //Assert
         expect(errorMessage).toContain('First Name is required.');
@@ -25,10 +25,10 @@ test.describe("Enrol Form Error Validation", () => {
 
     test('error should show when last name is empty', async ({page}) => {
         //Arrange
-        const errorMessage = enrolPage.getLastNameError();
+        await enrolPage.saveWithNoLastName();
 
         //Act
-        await enrolPage.saveWithNoLastName();
+        const errorMessage = enrolPage.getLastNameError();
 
         //Assert
         expect(errorMessage).toContain('Last Name is required.');
@@ -37,10 +37,10 @@ test.describe("Enrol Form Error Validation", () => {
 
     test('error should show when email address is empty', async ({page}) => {
         //Arrange
-        const errorMessage = enrolPage.getNoEmailError()
+        await enrolPage.saveWithNoEmail();
 
         //Act
-        await enrolPage.saveWithNoEmail();
+        const errorMessage = enrolPage.getNoEmailError()
 
         //Assert
         expect(errorMessage).toContain('Email is required.');
@@ -49,10 +49,10 @@ test.describe("Enrol Form Error Validation", () => {
 
     test('error should show when email address is invalid', async ({page}) => {
         //Arrange
-        const errorMessage = enrolPage.getInvalidEmailError()
+        await enrolPage.saveWithInvalidEmail();
 
         //Act
-        await enrolPage.saveWithInvalidEmail();
+        const errorMessage = enrolPage.getInvalidEmailError()
 
         //Assert
         expect(errorMessage).toContain('Please enter a valid email address.');
