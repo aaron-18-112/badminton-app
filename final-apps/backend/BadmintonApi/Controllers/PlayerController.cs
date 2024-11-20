@@ -1,17 +1,18 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using BadmintonApi.Models;
 using BadmintonApi.Services;
-using BadmintonApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
-namespace BadmintonApi.Controllers; 
+namespace BadmintonApi.Controllers;
 
 [Controller]
 [Route("api/[controller]")]
-public class PlayerController: Controller {
-    
+public class PlayerController : Controller
+{
     private readonly MongoDBService _mongoDBService;
 
-    public PlayerController(MongoDBService mongoDBService) {
+    public PlayerController(MongoDBService mongoDBService)
+    {
         _mongoDBService = mongoDBService;
     }
 
@@ -29,10 +30,9 @@ public class PlayerController: Controller {
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(ObjectId id)
     {
         await _mongoDBService.DeleteAsync(id);
         return NoContent();
     }
-
 }

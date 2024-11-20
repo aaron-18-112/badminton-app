@@ -1,16 +1,18 @@
 ﻿using BadmintonApi.Models;
 using Microsoft.Extensions.Options;
-using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace BadmintonApi.Services;
 
 public class MongoDBService
 {
     private readonly IMongoCollection<Player> _playerCollection;
-    public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings) {
-        MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
-        IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
+
+    public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
+    {
+        var client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
+        var database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
         _playerCollection = database.GetCollection<Player>(mongoDBSettings.Value.CollectionName);
     }
 
@@ -18,18 +20,15 @@ public class MongoDBService
     {
         return await _playerCollection.Find(new BsonDocument()).ToListAsync();
     }
-    
+
     public async Task CreateAsync(Player player)
     {
         await _playerCollection.InsertOneAsync(player);
-        return;
     }
 
-    public async Task DeleteAsync(string id)
+    public async Task DeleteAsync(ObjectId id)
     {
         FilterDefinition<Player> filter = Builders<Player>.Filter.Eq("Id", id);
         await _playerCollection.DeleteOneAsync(filter);
-        return;
     }
-
 }
