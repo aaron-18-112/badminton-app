@@ -1610,20 +1610,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aashah\\.nuget\\packages\\": {}
+    "C:\\Users\\aaron\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aashah\\Documents\\Apprenticeship\\badminton-app\\final-apps\\backend\\BadmintonApi\\BadmintonApi.csproj",
+      "projectUniqueName": "C:\\Users\\aaron\\Documents\\DTS\\Apprenticeship\\badminton-app\\final-apps\\backend\\BadmintonApi\\BadmintonApi.csproj",
       "projectName": "BadmintonApi",
-      "projectPath": "C:\\Users\\aashah\\Documents\\Apprenticeship\\badminton-app\\final-apps\\backend\\BadmintonApi\\BadmintonApi.csproj",
-      "packagesPath": "C:\\Users\\aashah\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aashah\\Documents\\Apprenticeship\\badminton-app\\final-apps\\backend\\BadmintonApi\\obj\\",
+      "projectPath": "C:\\Users\\aaron\\Documents\\DTS\\Apprenticeship\\badminton-app\\final-apps\\backend\\BadmintonApi\\BadmintonApi.csproj",
+      "packagesPath": "C:\\Users\\aaron\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aaron\\Documents\\DTS\\Apprenticeship\\badminton-app\\final-apps\\backend\\BadmintonApi\\obj\\",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
-        "C:\\Users\\aashah\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\aaron\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -1692,7 +1692,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\aaron\\.dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BadmintonApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99a47767be9947bd1963a0b986fe1d0071c62441")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e4fdaff9c3d61535e524d5d626f219e3431092b")]
 [assembly: System.Reflection.AssemblyProductAttribute("BadmintonApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BadmintonApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
