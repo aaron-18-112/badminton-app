@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {NgIf} from "@angular/common";
 import {Row} from "../../row";
 import {LocalStorageService} from "../../local-storage.service";
+import {PlayerService} from "../../services/player.service";
 
 @Component({
     selector: 'app-enrol-form',
@@ -21,7 +22,10 @@ export class EnrolFormComponent implements OnInit {
     @Output() addRow = new EventEmitter<Row>();
     @Output() formSubmit = new EventEmitter<any>();
 
-    constructor(private localStorageService: LocalStorageService, private formBuilder: FormBuilder) {
+    constructor(
+        private localStorageService: LocalStorageService,
+        private formBuilder: FormBuilder,
+        private playerService: PlayerService ) {
     }
 
     get firstName() {
@@ -43,12 +47,29 @@ export class EnrolFormComponent implements OnInit {
             email: ['', [Validators.required, Validators.pattern("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")]]
         });
     }
+    addPlayer(firstName: any, lastName: any, email: any){
+        const playerId = `${this.enrolForm.value.firstName}${this.enrolForm.value.lastName}`+(Math.floor(Math.random() * 100) + 1);
+        this.playerService.addPlayer(playerId, firstName, lastName, email)
+        console.log("I am being called");
+
+
+    }
 
     onSubmit(): void {
         this.enrolForm.markAllAsTouched();
 
         if (this.enrolForm.valid) {
+
+
+
             const fullName = `${this.enrolForm.value.firstName} ${this.enrolForm.value.lastName}`;
+            const playerId = `${this.enrolForm.value.firstName}${this.enrolForm.value.lastName}`+(Math.floor(Math.random() * 100) + 1);
+            const player = {
+                playerId: playerId,
+                firstName: this.enrolForm.value.firstName,
+                lastName: this.enrolForm.value.lastName,
+                email: this.enrolForm.value.email,
+            }
             const row: Row = {
                 name: fullName, email: this.enrolForm.value.email
             };
@@ -56,7 +77,7 @@ export class EnrolFormComponent implements OnInit {
             this.formSubmit.emit(this.enrolForm.value);
             this.addRow.emit(row);
             this.resetForm();
-            window.location.reload();
+
         }
     }
 
