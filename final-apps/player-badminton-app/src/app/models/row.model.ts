@@ -1,4 +1,4 @@
-export interface Row {
+export interface RowModel {
     name: string;
     email?: string;
 }

@@ -1,31 +1,24 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgIf} from '@angular/common';
 import {EnrolFormComponent} from "../enrol-form/enrol-form.component";
-import {Row} from "../../row";
+import {RowModel} from "../../models/row.model";
 
 @Component({
     selector: 'app-accordion',
     standalone: true,
-    imports: [EnrolFormComponent, CommonModule],
+    imports: [EnrolFormComponent, CommonModule, NgIf],
     templateUrl: `accordion.component.html`,
     styleUrls: ['accordion.component.css']
 })
 export class AccordionComponent {
-    isOpen: boolean = false;
+    isOpen: boolean = true;
 
-    @Output() addRow = new EventEmitter<Row>();
-    @Input() rows: Row[] = [];
+    // toggleAccordion() {
+    //     this.isOpen = !this.isOpen;
+    // }
 
-    toggleAccordion() {
-        this.isOpen = !this.isOpen;
-    }
+    handleFormSubmit($event: any): void {
 
-    handleFormSubmit(formData: any): void {
-
-        const row: Row = {
-            name: `${formData.firstName} ${formData.lastName}`, email: formData.email,
-        };
-        this.addRow.emit(row);
-        this.toggleAccordion();
+        // this.toggleAccordion();
     }
 }

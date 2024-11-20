@@ -31,4 +31,9 @@ public class MongoDBService
         FilterDefinition<Player> filter = Builders<Player>.Filter.Eq("Id", id);
         await _playerCollection.DeleteOneAsync(filter);
     }
+    
+    public async Task<long> GetPlayerCountAsync()
+    {
+        return await _playerCollection.CountDocumentsAsync(new BsonDocument());
+    }
 }

@@ -5,7 +5,7 @@ import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-
 import {NgClass} from "@angular/common";
 import {PaymentAmountComponent} from "../../components/payment-amount/payment-amount.component";
 import {PaymentTableComponent} from "../../components/payment-table/payment-table.component";
-import {Row} from "../../row";
+import {RowModel} from "../../models/row.model";
 
 @Component({
     selector: 'app-payment',
@@ -15,7 +15,6 @@ import {Row} from "../../row";
 })
 export class PaymentComponent {
 
-    rows: Row[] = [];
     menuOpen = false;
 
 

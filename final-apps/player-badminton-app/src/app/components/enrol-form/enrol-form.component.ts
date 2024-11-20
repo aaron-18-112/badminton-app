@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from "@angular/common";
-import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
+import {PlayerDetailsService} from "../../services/player-details.service";
 
 @Component({
     selector: 'app-enrol-form',
@@ -15,13 +14,9 @@ export class EnrolFormComponent implements OnInit {
 
     enrolForm!: FormGroup;
     isOpen = true;
-
-
-    @Input() rows: Row[] = [];
-    @Output() addRow = new EventEmitter<Row>();
     @Output() formSubmit = new EventEmitter<any>();
 
-    constructor(private localStorageService: LocalStorageService, private formBuilder: FormBuilder) {
+    constructor(private playerDetailsService: PlayerDetailsService, private formBuilder: FormBuilder) {
     }
 
     get firstName() {
@@ -48,22 +43,23 @@ export class EnrolFormComponent implements OnInit {
         this.enrolForm.markAllAsTouched();
 
         if (this.enrolForm.valid) {
-            const fullName = `${this.enrolForm.value.firstName} ${this.enrolForm.value.lastName}`;
-            const row: Row = {
-                name: fullName, email: this.enrolForm.value.email
-            };
+            const player = {
+                id: {},
+                firstName: this.firstName.value,
+                lastName: this.lastName.value,
+                email: this.email.value,
+            }
+            this.playerDetailsService.createPlayer(player).subscribe(() => {
+                this.enrolForm.reset();
+            })
 
-            this.formSubmit.emit(this.enrolForm.value);
-            this.addRow.emit(row);
-            this.resetForm();
-            window.location.reload();
         }
     }
 
-    resetForm(): void {
-        this.enrolForm.reset();
-        this.isOpen = false;
-    }
+    // resetForm(): void {
+    //     this.enrolForm.reset();
+    //     this.isOpen = false;
+    // }
 
 }
 

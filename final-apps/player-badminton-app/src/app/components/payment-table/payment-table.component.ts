@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgStyle} from "@angular/common";
-import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
+import {PlayerDetailsService} from "../../services/player-details.service";
+
 
 
 @Component({
@@ -12,13 +12,9 @@ import {LocalStorageService} from "../../local-storage.service";
     styleUrls: ['payment-table.component.css']
 })
 export class PaymentTableComponent implements OnInit {
-    rows: Row[] = [];
-
-    constructor(private localStorageService: LocalStorageService) {
-    }
 
     ngOnInit(): void {
-        this.rows = this.localStorageService.loadRows();
+
     }
 
 }

@@ -1,7 +1,8 @@
 import {NgFor, NgStyle} from '@angular/common';
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
+import {Component, OnInit} from '@angular/core';
+import {PlayerDetailsService} from "../../services/player-details.service";
+import {Player} from "../../models/player.model";
+
 
 @Component({
     selector: 'app-table',
@@ -12,20 +13,36 @@ import {LocalStorageService} from "../../local-storage.service";
 })
 
 export class EnrolTableComponent implements OnInit {
-    @Input() rows: Row[] = [];
-    @Output() removeRow = new EventEmitter<number>();
+    rows: Player[] = [];
 
-
-    constructor(private localStorageService: LocalStorageService) {
+    constructor(private playerDetailsService: PlayerDetailsService) {
     }
 
     ngOnInit(): void {
-        this.rows = this.localStorageService.loadRows();
+        this.loadPlayers();
+    }
+
+    // Fetch all players from the backend
+    loadPlayers(): void {
+        this.playerDetailsService.getAllPlayers().subscribe({
+            next: (players) => {
+                this.rows = players;
+            },
+            error: (err) => {
+                console.error('Error fetching players:', err);
+            },
+        });
     }
 
     handleRemoveRow(index: number): void {
-        this.removeRow.emit(index);
-        window.location.reload();
+        const playerId = this.rows[index].id;
+        this.playerDetailsService.deletePlayer(playerId).subscribe({
+            next: () => {
+                this.rows.splice(index, 1);
+            },
+            error: (err) => {
+                console.error('Error deleting player:', err);
+            },
+        });
     }
-
 }

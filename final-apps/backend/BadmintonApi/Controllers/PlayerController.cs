@@ -35,4 +35,11 @@ public class PlayerController : Controller
         await _mongoDBService.DeleteAsync(id);
         return NoContent();
     }
+    
+    [HttpGet("count")]
+    public async Task<IActionResult> GetPlayerCount()
+    {
+        var count = await _mongoDBService.GetPlayerCountAsync();
+        return Ok(count);
+    }
 }
