@@ -5,7 +5,6 @@ import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-
 import {NgClass} from "@angular/common";
 import {PaymentAmountComponent} from "../../components/payment-amount/payment-amount.component";
 import {PaymentTableComponent} from "../../components/payment-table/payment-table.component";
-import {RowModel} from "../../models/row.model";
 
 @Component({
     selector: 'app-payment',

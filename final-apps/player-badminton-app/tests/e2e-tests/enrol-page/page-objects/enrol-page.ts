@@ -109,38 +109,38 @@ export class EnrolPage {
         return await paymentColumn.allInnerTexts();
     }
 
-    async saveWithNoFirstName () {
+    async saveWithNoFirstName() {
         await this.enterLastName();
         await this.enterEmail();
         await this.clickSubmitButton();
     }
 
-    async getFirstNameError () {
+    async getFirstNameError() {
         return this.page.getByTestId('firstName-required').textContent();
     }
 
 
-    async saveWithNoLastName () {
+    async saveWithNoLastName() {
         await this.enterFirstName();
         await this.enterEmail();
         await this.clickSubmitButton();
     }
 
-    async getLastNameError () {
+    async getLastNameError() {
         return this.page.getByTestId('lastName-required').textContent();
     }
 
-    async saveWithNoEmail () {
+    async saveWithNoEmail() {
         await this.enterFirstName();
         await this.enterLastName();
         await this.clickSubmitButton();
     }
 
-    async getNoEmailError () {
+    async getNoEmailError() {
         return this.page.getByTestId('email-required').textContent();
     }
 
-    async saveWithInvalidEmail () {
+    async saveWithInvalidEmail() {
         await this.enterFirstName();
         await this.enterLastName();
         await this.page.getByLabel('Email Address:').click();
@@ -148,7 +148,7 @@ export class EnrolPage {
         await this.clickSubmitButton();
     }
 
-    async getInvalidEmailError () {
+    async getInvalidEmailError() {
         return this.page.getByTestId('email-validation').textContent();
     }
 

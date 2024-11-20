@@ -3,7 +3,7 @@ import {EnrolPage} from "./page-objects/enrol-page";
 
 test.describe("Enrol Page", () => {
 
-    let enrolPage : EnrolPage;
+    let enrolPage: EnrolPage;
 
     test.beforeEach(async ({page}) => {
         enrolPage = new EnrolPage(page);
@@ -21,7 +21,7 @@ test.describe("Enrol Page", () => {
         const tableNameValue = await enrolPage.tableOutput()
 
         //Assert
-        expect (formNameValue).toEqual(tableNameValue);
+        expect(formNameValue).toEqual(tableNameValue);
 
     })
 

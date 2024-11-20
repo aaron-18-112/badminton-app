@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Player} from "../models/player.model";
-import {ObjectId} from "mongodb";
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +13,7 @@ export class PlayerDetailsService {
     constructor(private http: HttpClient) {
     }
 
-    getAllPlayers (): Observable<Player[]> {
+    getAllPlayers(): Observable<Player[]> {
         return this.http.get<Player[]>(`${this.apiUrl}`);
     }
 

@@ -50,16 +50,17 @@ export class EnrolFormComponent implements OnInit {
                 email: this.email.value,
             }
             this.playerDetailsService.createPlayer(player).subscribe(() => {
-                this.enrolForm.reset();
+                this.formSubmit.emit();
+                this.resetForm();
             })
 
         }
     }
 
-    // resetForm(): void {
-    //     this.enrolForm.reset();
-    //     this.isOpen = false;
-    // }
+    resetForm(): void {
+        this.enrolForm.reset();
+        this.isOpen = false;
+    }
 
 }
 

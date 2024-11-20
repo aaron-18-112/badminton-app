@@ -11,11 +11,11 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
 })
 export class HamburgerMenuComponent {
     @Input() menuOpen: boolean = false;
-    @Output() toggleMenu = new EventEmitter<void>();  // This emits the event to the parent component
+    @Output() toggleMenu = new EventEmitter<void>();
 
-    // This method will emit the toggleMenu event to the parent component
+
     toggleMenuState(): void {
         this.menuOpen = !this.menuOpen;
-        this.toggleMenu.emit();  // Emit the event to the parent
+        this.toggleMenu.emit();
     }
 }

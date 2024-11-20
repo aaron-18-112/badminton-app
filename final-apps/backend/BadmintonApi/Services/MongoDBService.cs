@@ -28,7 +28,7 @@ public class MongoDBService
 
     public async Task DeleteAsync(ObjectId id)
     {
-        FilterDefinition<Player> filter = Builders<Player>.Filter.Eq("Id", id);
+        FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(player => player.Id, id);
         await _playerCollection.DeleteOneAsync(filter);
     }
     

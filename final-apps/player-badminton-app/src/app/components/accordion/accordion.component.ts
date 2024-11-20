@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule, NgIf} from '@angular/common';
 import {EnrolFormComponent} from "../enrol-form/enrol-form.component";
-import {RowModel} from "../../models/row.model";
 
 @Component({
     selector: 'app-accordion',
@@ -11,14 +10,13 @@ import {RowModel} from "../../models/row.model";
     styleUrls: ['accordion.component.css']
 })
 export class AccordionComponent {
-    isOpen: boolean = true;
+    isOpen: boolean = false;
 
-    // toggleAccordion() {
-    //     this.isOpen = !this.isOpen;
-    // }
+    toggleAccordion() {
+        this.isOpen = !this.isOpen;
+    }
 
     handleFormSubmit($event: any): void {
-
-        // this.toggleAccordion();
+        this.toggleAccordion();
     }
 }
