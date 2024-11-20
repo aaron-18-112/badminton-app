@@ -37,7 +37,11 @@
             <div *ngIf="email.hasError('pattern')" data-testid="email-validation">Please enter a valid email address.</div>
         </div>
 
-        <button data-testid="submit-button" id="submit-button" type="submit" (click)="addPlayer(firstName, lastName, email)">Submit</button>
+        <button data-testid="submit-button" id="submit-button" type="submit" (click)="addPlayer()">Submit</button>
     </div>
 </form>
+
+
+
+
 

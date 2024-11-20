@@ -26,12 +26,9 @@ export class PlayerService {
             lastName: lastName,
             email: email
         } ;
-        console.log("i am being used aswell, my body", body);
-        this.http.post<any>('http://localhost:5062/Player',body, {observe: 'response'}).subscribe(res => {
-            console.log('Response status:', res.status);
-        })
-        return this.http.post<any>("http://localhost:5062/Player", body)
 
+        console.log("i am being used aswell, my body", body);
+        return this.http.post<any>("http://localhost:5062/Player", body);
 
     }
 }

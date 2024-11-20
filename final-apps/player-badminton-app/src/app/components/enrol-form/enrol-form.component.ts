@@ -21,6 +21,7 @@ export class EnrolFormComponent implements OnInit {
     @Input() rows: Row[] = [];
     @Output() addRow = new EventEmitter<Row>();
     @Output() formSubmit = new EventEmitter<any>();
+    listOfPlayersData: any = null;
 
     constructor(
         private localStorageService: LocalStorageService,
@@ -47,11 +48,24 @@ export class EnrolFormComponent implements OnInit {
             email: ['', [Validators.required, Validators.pattern("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")]]
         });
     }
-    addPlayer(firstName: any, lastName: any, email: any){
-        const playerId = `${this.enrolForm.value.firstName}${this.enrolForm.value.lastName}`+(Math.floor(Math.random() * 100) + 1);
-        this.playerService.addPlayer(playerId, firstName, lastName, email)
-        console.log("I am being called");
 
+    getPlayers(){
+        this.playerService.getListOfPlayers().subscribe((data) => {
+            this.listOfPlayersData = data;
+        })
+
+
+    }
+    addPlayer(){
+        const firstName = this.enrolForm.get('firstName')?.value
+        const lastName = this.enrolForm.get('lastName')?.value
+        const email = this.enrolForm.get('email')?.value// pulling from the actual value -
+        const playerId = `${firstName}${lastName}`+(Math.floor(Math.random() * 100) + 1);
+
+
+        this.playerService.addPlayer(playerId, firstName, lastName, email).subscribe( () => {
+            this.getPlayers();
+        })
 
     }
 
