@@ -1,4 +1,5 @@
-﻿using BadmintonApi.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using BadmintonApi.Models;
 using BadmintonApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
@@ -30,7 +31,7 @@ public class PlayerController : Controller
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(ObjectId id)
+    public async Task<IActionResult> Delete(string id)
     {
         await _mongoDBService.DeleteAsync(id);
         return NoContent();
