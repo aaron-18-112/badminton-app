@@ -14,7 +14,7 @@ import {PlayerService} from "../../services/player.service";
 
 export class EnrolTableComponent implements OnInit {
     @Input() rows: Row[] = [];
-    @Output() removeRow = new EventEmitter<number>();
+    @Output() removeRow = new EventEmitter<string>();
     listOfPlayersData: any = null;
 
 
@@ -26,15 +26,32 @@ export class EnrolTableComponent implements OnInit {
         this.getPlayers()
     }
 
-    handleRemoveRow(index: number): void {
-        this.removeRow.emit(index);
-        window.location.reload();
+    handleRemoveRow(_id: string): void {
+        this.removeRow.emit(_id);
+        console.log(_id);
+
+        this.playerService.deletePlayer(_id).subscribe((response) => {
+            console.log(response);
+
+
+        })
+
+        window.location.reload()
+
+
     }
     getPlayers(){
         this.playerService.getListOfPlayers().subscribe((data) => {
             this.listOfPlayersData = data;
+            console.log(this.listOfPlayersData);
         })
 
+
+    }
+    deletePlayers(_id: string){
+        this.playerService.deletePlayer(_id).subscribe((response) => {
+            console.log(response);
+        })
 
     }
 

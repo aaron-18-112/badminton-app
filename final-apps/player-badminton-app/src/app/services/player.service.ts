@@ -35,5 +35,9 @@ export class PlayerService {
         return this.http.get<{ count: number}>(`${this.apiUrl}/count`);
     }
 
+    deletePlayer(id: string): Observable<any>{
+        return this.http.delete(`${this.apiUrl}/${id}`)
+    }
+
 
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgStyle} from "@angular/common";
 import {Row} from "../../row";
 import {PlayerService} from "../../services/player.service"
+;
 
 
 @Component({
@@ -33,5 +34,7 @@ export class PaymentTableComponent implements OnInit {
 
 
     }
+
+
 
 }
