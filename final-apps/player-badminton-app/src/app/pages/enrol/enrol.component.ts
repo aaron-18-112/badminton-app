@@ -38,9 +38,8 @@ export class EnrolComponent implements OnInit {
 
     }
 
-    handleRowRemoval(index: number) {
-        this.rows.splice(index, 1);  // Remove the row at the specified index
-        this.saveRowsTolocalStorage()
+    handleRowRemoval() {
+
     }
 
 

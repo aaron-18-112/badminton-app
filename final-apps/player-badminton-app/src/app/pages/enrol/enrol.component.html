@@ -8,7 +8,7 @@
         <app-event-info></app-event-info>
         <app-accordion (addRow)="handleRowAddition($event)" [rows]="rows"></app-accordion>
         <div class="table-component">
-            <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
+            <app-table (removeRow)="handleRowRemoval()" [rows]="rows"></app-table>
         </div>
     </div>
 

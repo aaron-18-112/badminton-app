@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("badmintonAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae932ece2ba92603361b4617020c669274fa61d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5180869571978ff892dcbf80e5c52e6bfbcb788b")]
 [assembly: System.Reflection.AssemblyProductAttribute("badmintonAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("badmintonAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

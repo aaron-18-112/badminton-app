@@ -15,7 +15,6 @@ public class MongoDbService
         MongoClient client = new MongoClient(mongoDbSettings.Value.ConnectionURI);
         IMongoDatabase database = client.GetDatabase(mongoDbSettings.Value.DatabaseName);
         _playerCollection = database.GetCollection<Player>(mongoDbSettings.Value.CollectionName);
-
     }
 
     public async Task<List<Player>> GetAsync()
@@ -31,8 +30,16 @@ public class MongoDbService
 
     public async Task DeleteAsync(string playerId)
     {
-        FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.playerId, playerId);
+        FilterDefinition<Player> filter = Builders<Player>.Filter.Eq<string>(p => p.Id, playerId);
         await _playerCollection.DeleteOneAsync(filter);
         return;
     }
+    
+    public async Task<long> CountAsync()
+    {
+        return await _playerCollection.CountDocumentsAsync(FilterDefinition<Player>.Empty);
+    }
+
 }
+
+
