@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgStyle} from "@angular/common";
 import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
+import {PlayerService} from "../../services/player.service"
 
 
 @Component({
@@ -13,12 +13,25 @@ import {LocalStorageService} from "../../local-storage.service";
 })
 export class PaymentTableComponent implements OnInit {
     rows: Row[] = [];
+    listOfPlayersData: any = null;
 
-    constructor(private localStorageService: LocalStorageService) {
+    constructor(public playerService: PlayerService) {
     }
 
     ngOnInit(): void {
-        this.rows = this.localStorageService.loadRows();
+        console.log("the data is loaded from the database for the Payment Tab")
+        this.getPlayers()
+    }
+
+    handleRemoveRow(index: number): void {
+        window.location.reload();
+    }
+    getPlayers(){
+        this.playerService.getListOfPlayers().subscribe((data) => {
+            this.listOfPlayersData = data;
+        })
+
+
     }
 
 }

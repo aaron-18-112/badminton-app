@@ -1,7 +1,7 @@
 import {NgFor, NgStyle} from '@angular/common';
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
+
 import {PlayerService} from "../../services/player.service";
 
 @Component({
@@ -18,12 +18,11 @@ export class EnrolTableComponent implements OnInit {
     listOfPlayersData: any = null;
 
 
-    constructor(private localStorageService: LocalStorageService, public playerService: PlayerService) {
+    constructor( public playerService: PlayerService) {
     }
 
     ngOnInit(): void {
-        this.rows = this.localStorageService.loadRows();
-        console.log('Im called');
+       console.log("the data is loaded from the database for the Payment Tab")
         this.getPlayers()
     }
 

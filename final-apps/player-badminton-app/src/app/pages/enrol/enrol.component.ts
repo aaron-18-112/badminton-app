@@ -19,12 +19,11 @@ export class EnrolComponent implements OnInit {
     menuOpen = false;
     rows: Row[] = [];
 
-    constructor(private localStorageService: LocalStorageService) {
+    constructor() {
     }
 
     ngOnInit(): void {
-        this.loadRowsFromlocalStorage();
-        this.localStorageService.setItem('rowCount', this.rows.length);
+
     }
 
     toggleMenu(): void {
@@ -46,15 +45,10 @@ export class EnrolComponent implements OnInit {
 
 
     private loadRowsFromlocalStorage(): void {
-        const savedRows = this.localStorageService.getItem<Row[]>('rows');
-        if (savedRows) {
-            this.rows = savedRows;
-            console.log('Rows loaded from localStorage:', this.rows);
-        }
+
     }
 
     private saveRowsTolocalStorage(): void {
-        this.localStorageService.setItem('rows', this.rows);
     }
 
 

@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from "@angular/common";
 import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
+
 import {PlayerService} from "../../services/player.service";
 
 @Component({
@@ -24,7 +24,7 @@ export class EnrolFormComponent implements OnInit {
     listOfPlayersData: any = null;
 
     constructor(
-        private localStorageService: LocalStorageService,
+
         private formBuilder: FormBuilder,
         private playerService: PlayerService ) {
     }
@@ -61,9 +61,10 @@ export class EnrolFormComponent implements OnInit {
         const lastName = this.enrolForm.get('lastName')?.value
         const email = this.enrolForm.get('email')?.value// pulling from the actual value -
         const playerId = `${firstName}${lastName}`+(Math.floor(Math.random() * 100) + 1);
+        const name = `${firstName} ${lastName}`;
 
 
-        this.playerService.addPlayer(playerId, firstName, lastName, email).subscribe( () => {
+        this.playerService.addPlayer(playerId,name, firstName, lastName, email).subscribe( () => {
             this.getPlayers();
         })
 
@@ -76,21 +77,23 @@ export class EnrolFormComponent implements OnInit {
 
 
 
-            const fullName = `${this.enrolForm.value.firstName} ${this.enrolForm.value.lastName}`;
+            const name = `${this.enrolForm.value.firstName} ${this.enrolForm.value.lastName}`;
             const playerId = `${this.enrolForm.value.firstName}${this.enrolForm.value.lastName}`+(Math.floor(Math.random() * 100) + 1);
             const player = {
                 playerId: playerId,
+                name: name,
                 firstName: this.enrolForm.value.firstName,
                 lastName: this.enrolForm.value.lastName,
                 email: this.enrolForm.value.email,
             }
             const row: Row = {
-                name: fullName, email: this.enrolForm.value.email
+                name: name, email: this.enrolForm.value.email
             };
 
             this.formSubmit.emit(this.enrolForm.value);
             this.addRow.emit(row);
             this.resetForm();
+            window.location.reload()
 
         }
     }
