@@ -35,7 +35,7 @@ export class EnrolTableComponent implements OnInit {
     }
 
     handleRemoveRow(index: number): void {
-        const playerId = this.rows[index].id;
+        const playerId = this.rows[index].firstName;
         this.playerDetailsService.deletePlayer(playerId).subscribe({
             next: () => {
                 this.rows.splice(index, 1);
