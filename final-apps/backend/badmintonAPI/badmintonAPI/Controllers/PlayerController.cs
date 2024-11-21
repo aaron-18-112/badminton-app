@@ -41,7 +41,7 @@ public class PlayerController : ControllerBase
     [HttpGet("count")]
     public async Task<IActionResult> GetPlayerCount()
     {
-        var count = await _mongoDbService.CountAsync();
-        return Ok(count);
+        var count = (await _mongoDbService.GetAsync()).Count;
+        return Ok(new {count});
     }
 }
