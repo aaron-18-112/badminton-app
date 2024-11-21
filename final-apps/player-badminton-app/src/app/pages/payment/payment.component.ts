@@ -1,15 +1,22 @@
 import {Component} from '@angular/core';
+import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-menu.component";
 import {NavComponent} from "../../components/nav/nav.component";
 import {EventInfoComponent} from "../../components/event-info/event-info.component";
-import {HamburgerMenuComponent} from "../../components/hamburger-menu/hamburger-menu.component";
-import {NgClass} from "@angular/common";
 import {PaymentAmountComponent} from "../../components/payment-amount/payment-amount.component";
 import {PaymentTableComponent} from "../../components/payment-table/payment-table.component";
+import {NgClass} from "@angular/common";
 
 @Component({
     selector: 'app-payment',
     standalone: true,
-    imports: [NavComponent, EventInfoComponent, HamburgerMenuComponent, NgClass, PaymentAmountComponent, PaymentTableComponent],
+    imports: [
+        HamburgerMenuComponent,
+        NavComponent,
+        EventInfoComponent,
+        PaymentAmountComponent,
+        PaymentTableComponent,
+        NgClass
+    ],
     templateUrl: `payment.component.html`,
 })
 export class PaymentComponent {

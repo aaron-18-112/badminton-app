@@ -1,11 +1,11 @@
 import {NgFor, NgStyle} from '@angular/common';
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PlayerDetailsService} from "../../services/player-details.service";
 import {Player} from "../../models/player.model";
 
 
 @Component({
-    selector: 'app-table',
+    selector: 'app-enrol-table',
     standalone: true,
     imports: [NgStyle, NgFor],
     templateUrl: 'enrol-table.component.html',
@@ -13,7 +13,9 @@ import {Player} from "../../models/player.model";
 })
 
 export class EnrolTableComponent implements OnInit {
-    rows: Player[] = [];
+    @Input() rows: Player[] = [];
+
+    @Output() removeRow = new EventEmitter<number>();
 
     constructor(private playerDetailsService: PlayerDetailsService) {
     }
@@ -22,7 +24,6 @@ export class EnrolTableComponent implements OnInit {
         this.loadPlayers();
     }
 
-    // Fetch all players from the backend
     loadPlayers(): void {
         this.playerDetailsService.getAllPlayers().subscribe({
             next: (players) => {
@@ -35,10 +36,11 @@ export class EnrolTableComponent implements OnInit {
     }
 
     handleRemoveRow(index: number): void {
-        const playerId = this.rows[index].firstName;
+        const playerId = this.rows[index].id;
         this.playerDetailsService.deletePlayer(playerId).subscribe({
             next: () => {
                 this.rows.splice(index, 1);
+                this.removeRow.emit(index);
             },
             error: (err) => {
                 console.error('Error deleting player:', err);

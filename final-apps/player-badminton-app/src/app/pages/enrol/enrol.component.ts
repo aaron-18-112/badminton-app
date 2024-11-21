@@ -6,7 +6,6 @@ import {AccordionComponent} from "../../components/accordion/accordion.component
 import {NavComponent} from "../../components/nav/nav.component";
 import {EventInfoComponent} from "../../components/event-info/event-info.component";
 
-
 @Component({
     selector: 'app-enrol-component',
     standalone: true,

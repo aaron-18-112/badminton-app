@@ -14,6 +14,7 @@ export class EnrolFormComponent implements OnInit {
 
     enrolForm!: FormGroup;
     isOpen = true;
+
     @Output() formSubmit = new EventEmitter<any>();
 
     constructor(private playerDetailsService: PlayerDetailsService, private formBuilder: FormBuilder) {
@@ -44,7 +45,7 @@ export class EnrolFormComponent implements OnInit {
 
         if (this.enrolForm.valid) {
             const player = {
-                id: {},
+                id: "",
                 firstName: this.firstName.value,
                 lastName: this.lastName.value,
                 email: this.email.value,
@@ -53,7 +54,6 @@ export class EnrolFormComponent implements OnInit {
                 this.formSubmit.emit();
                 this.resetForm();
             })
-
         }
     }
 
