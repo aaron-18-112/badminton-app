@@ -34,9 +34,11 @@ export class EnrolTableComponent implements OnInit {
             console.log(response);
 
 
-        })
 
+        })
         window.location.reload()
+
+
 
 
     }
@@ -44,6 +46,8 @@ export class EnrolTableComponent implements OnInit {
         this.playerService.getListOfPlayers().subscribe((data) => {
             this.listOfPlayersData = data;
             console.log(this.listOfPlayersData);
+
+
         })
 
 
@@ -51,6 +55,8 @@ export class EnrolTableComponent implements OnInit {
     deletePlayers(_id: string){
         this.playerService.deletePlayer(_id).subscribe((response) => {
             console.log(response);
+
+
         })
 
     }

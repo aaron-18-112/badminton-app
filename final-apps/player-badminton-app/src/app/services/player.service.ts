@@ -30,6 +30,7 @@ export class PlayerService {
         console.log("i am being used aswell, my body", body);
         return this.http.post<any>("http://localhost:5062/Player", body);
 
+
     }
     getCount(): Observable<{count: number}>{
         return this.http.get<{ count: number}>(`${this.apiUrl}/count`);

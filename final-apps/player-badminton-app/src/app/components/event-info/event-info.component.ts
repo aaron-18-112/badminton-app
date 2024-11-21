@@ -20,20 +20,26 @@ export class EventInfoComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        console.log('EventInfoComponent initialised');
        this.fetchPlayerCount();
+
     }
 
     fetchPlayerCount(): void{
 
         this.playerService.getCount().subscribe({
-            next: (response) => {
-                this.playerCount = response.count;
+            next: ({count}) => {
+                this.playerCount = count;
+
+                console.log("I am being used 5555", count);
             },
             error: (err) => {
                 console.error('Failed to fetch player count', err);
                 this.playerCount = null; // Handle error case
             }
         });
+
+
     }
     get rowCount(): number {
     return this.rows.length;

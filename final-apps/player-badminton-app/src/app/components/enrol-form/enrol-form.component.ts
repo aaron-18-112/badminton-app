@@ -93,9 +93,10 @@ export class EnrolFormComponent implements OnInit {
             this.formSubmit.emit(this.enrolForm.value);
             this.addRow.emit(row);
             this.resetForm();
-            window.location.reload()
+
 
         }
+        window.location.reload()
     }
 
     resetForm(): void {
