@@ -73,12 +73,7 @@ export class EnrolPage {
             await this.clickSubmitButton();
         }
     }
-
-    async getNumberOfPlayers() {
-        const numberOfPlayersString = this.page.getByTestId('numberOfPlayers').innerText();
-        return parseInt(await numberOfPlayersString);
-    }
-
+    
     async getNumberOfPlayersForWorker(workerId: number): Promise<any> {
         const players =  await this.page.locator('table td:first-child').allInnerTexts();
         const playersFilteredByWorkerId = players.filter(player => player.includes(String(workerId)));
