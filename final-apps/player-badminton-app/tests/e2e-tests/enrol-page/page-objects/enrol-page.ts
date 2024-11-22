@@ -1,7 +1,8 @@
 import {Page} from '@playwright/test';
+import {PlayerDetailsService} from "../../../../src/app/services/player-details.service";
 
 export class EnrolPage {
-    readonly page: Page;
+    page: Page;
 
     constructor(page: Page) {
         this.page = page;
@@ -13,6 +14,10 @@ export class EnrolPage {
 
     async navigateToPaymentPage() {
         await this.page.goto('./payment');
+    }
+
+    async deleteAllPlayers(playerDetailsService: PlayerDetailsService) {
+        playerDetailsService.deleteAllPlayers();
     }
 
     async formInput() {
@@ -28,8 +33,8 @@ export class EnrolPage {
     }
 
     async tableOutput() {
-        const name = await this.page.locator('table td:first-child').allInnerTexts();
-        return name.join('');
+        const players =  await this.page.locator('table td:first-child').allInnerTexts();
+        return players.find(player => player === "Test User");
     }
 
     async enterFirstName(firstName: string = 'test') {
@@ -37,9 +42,9 @@ export class EnrolPage {
         await this.page.getByLabel('First Name:').fill(firstName);
     }
 
-    async enterLastName(lastName: string = 'user') {
+    async enterLastName(lastName: string , workerId: number) {
         await this.page.getByLabel('Last Name:').click();
-        await this.page.getByLabel('Last Name:').fill(lastName + " " + (Math.floor(Math.random() * 100) + 1));
+        await this.page.getByLabel('Last Name:').fill(lastName + " " + workerId);
     }
 
     async enterEmail(email: string = 'user@ajbell.com') {
@@ -59,16 +64,14 @@ export class EnrolPage {
         await this.page.waitForTimeout(800);
     }
 
-    async enrolMultiplePlayers(numberOfPlayers: number) {
-
+    enrolMultiplePlayers = async (numberOfPlayers: number, workerId: number) => {
         for (let i = 1; i <= numberOfPlayers; i++) {
             await this.clickJoinButton();
             await this.enterFirstName();
-            await this.enterLastName();
+            await this.enterLastName("user", workerId);
             await this.enterEmail();
-            await this.clickSubmitButton()
+            await this.clickSubmitButton();
         }
-
     }
 
     async getNumberOfPlayers() {
@@ -76,41 +79,40 @@ export class EnrolPage {
         return parseInt(await numberOfPlayersString);
     }
 
-    async clickFirstRemoveButton() {
-        await this.page.getByRole('button', {name: 'remove'}).first().hover();
-        await this.page.getByRole('button', {name: 'remove'}).first().click();
+    async getNumberOfPlayersForWorker(workerId: number): Promise<any> {
+        const players =  await this.page.locator('table td:first-child').allInnerTexts();
+        const playersFilteredByWorkerId = players.filter(player => player.includes(String(workerId)));
+
+        return playersFilteredByWorkerId.length;
     }
 
-    async clickLastRemoveButton() {
-        await this.page.getByRole('button', {name: 'remove'}).last().hover();
-        await this.page.getByRole('button', {name: 'remove'}).last().click();
-    }
+    async removeMultiplePlayers(numberOfPlayers: number, workerId: number) {
 
-    async removeMultiplePlayers(numberOfPlayers: number) {
+        for (let i = 1; i <= numberOfPlayers; i++) {
 
-        for (let i = 1; i <= (numberOfPlayers / 2); i++) {
-            await this.clickFirstRemoveButton();
-            await this.page.waitForTimeout(760)
+            const playerRow = this.page.locator(`table tr:has(td:nth-child(1):has-text("${workerId}"))`).first();
+
+            await playerRow.locator('td:nth-child(2)').click();
+            await this.page.waitForTimeout(1000);
         }
-        for (let i = 1; i <= (numberOfPlayers / 2); i++) {
-            await this.clickLastRemoveButton();
-            await this.page.waitForTimeout(760)
-        }
-
     }
 
-    async getEnrolTableData() {
+    async getEnrolTableDataForWorker(workerId: number): Promise<string[]> {
         const enrolColumn = this.page.locator('table td:first-child');
-        return await enrolColumn.allInnerTexts();
+        const players = await enrolColumn.allInnerTexts();
+
+        return players.filter(player => player.includes(String(workerId)));
     }
 
-    async getPaymentTableData() {
+    async getPaymentTableDataForWorker(workerId: number): Promise<string[]> {
         const paymentColumn = this.page.locator('table td:first-child');
-        return await paymentColumn.allInnerTexts();
+        const players = await paymentColumn.allInnerTexts();
+
+        return players.filter(player => player.includes(String(workerId)));
     }
 
-    async saveWithNoFirstName() {
-        await this.enterLastName();
+    async saveWithNoFirstName(number: number) {
+        await this.enterLastName("", number);
         await this.enterEmail();
         await this.clickSubmitButton();
     }
@@ -130,9 +132,9 @@ export class EnrolPage {
         return this.page.getByTestId('lastName-required').textContent();
     }
 
-    async saveWithNoEmail() {
+    async saveWithNoEmail(number: number) {
         await this.enterFirstName();
-        await this.enterLastName();
+        await this.enterLastName("", number);
         await this.clickSubmitButton();
     }
 
@@ -140,9 +142,9 @@ export class EnrolPage {
         return this.page.getByTestId('email-required').textContent();
     }
 
-    async saveWithInvalidEmail() {
+    async saveWithInvalidEmail(workerId: number) {
         await this.enterFirstName();
-        await this.enterLastName();
+        await this.enterLastName("", workerId);
         await this.page.getByLabel('Email Address:').click();
         await this.page.getByLabel('Email Address:').fill('invalidEmail');
         await this.clickSubmitButton();

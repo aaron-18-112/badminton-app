@@ -46,5 +46,7 @@ export class EnrolTableComponent implements OnInit {
                 console.error('Error deleting player:', err);
             },
         });
+
+        window.location.reload()
     }
 }

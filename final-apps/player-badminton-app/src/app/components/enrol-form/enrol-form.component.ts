@@ -60,6 +60,7 @@ export class EnrolFormComponent implements OnInit {
     resetForm(): void {
         this.enrolForm.reset();
         this.isOpen = false;
+        window.location.reload()
     }
 
 }

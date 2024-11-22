@@ -29,4 +29,8 @@ export class PlayerDetailsService {
         return this.http.get<number>(`${this.apiUrl}/count`);
     }
 
+    deleteAllPlayers (): Observable<any> {
+        return this.http.get<number>(`${this.apiUrl}/all`);
+    }
+
 }

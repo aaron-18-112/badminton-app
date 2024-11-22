@@ -1,6 +1,7 @@
 import {expect, test} from '@playwright/test';
 import {EnrolPage} from "./page-objects/enrol-page";
 
+
 test.describe("Enrol Page", () => {
 
     let enrolPage: EnrolPage;
@@ -9,6 +10,10 @@ test.describe("Enrol Page", () => {
         enrolPage = new EnrolPage(page);
         await enrolPage.navigateToEnrolPage();
     })
+
+    // test.afterAll(async () => {
+    //    await enrolPage.deleteAllPlayers();
+    // });
 
     test('has title', async ({page}) => {
         await expect(page).toHaveTitle(/AJ Bell ShuttleBell/);
@@ -25,44 +30,51 @@ test.describe("Enrol Page", () => {
 
     })
 
-    test('enrol multiple players - expect correct number of players to be added', async () => {
-        test.slow();
+    test('enrol multiple players - expect correct number of players to be added', async ({page}, testInfo) => {
+
+
         //Arrange
-        const numberOfPlayers = 20 //Change number of players
+        const numberOfPlayers = 10 //Change number of players
+        const workerId: number = testInfo.workerIndex;
+
+        expect(enrolPage).toBeDefined();
 
         //Act
-        await enrolPage.enrolMultiplePlayers(numberOfPlayers);
-        const numberOfPlayersLabel = await enrolPage.getNumberOfPlayers();
+        await enrolPage.enrolMultiplePlayers(numberOfPlayers, workerId)
+        const numberOfPlayersLabel = await enrolPage.getNumberOfPlayersForWorker(workerId)
 
         //Assert
         expect(numberOfPlayersLabel).toEqual(numberOfPlayers);
+
     })
 
-    test('remove multiple players - expect total to drop to 0', async () => {
-        test.slow();
+    test('remove multiple players - expect total to drop to 0', async ({page}, testInfo) => {
+
         //Arrange
         const numberOfPlayers = 10
+        const workerId: number = testInfo.workerIndex;
 
         //Act
-        await enrolPage.enrolMultiplePlayers(numberOfPlayers);
-        await enrolPage.removeMultiplePlayers(numberOfPlayers);
-        const numberOfPlayersLabel = await enrolPage.getNumberOfPlayers();
+        await enrolPage.enrolMultiplePlayers(numberOfPlayers, workerId);
+        await enrolPage.removeMultiplePlayers(numberOfPlayers, workerId);
+        const numberOfPlayersLabel = await enrolPage.getNumberOfPlayersForWorker(workerId);
 
         //Assert
         expect(numberOfPlayersLabel).toEqual(0);
     })
 
-    test('check enrol table values are displaying on the payment table', async () => {
-        test.slow()
+    test('check enrol table values are displaying on the payment table', async ({page}, testInfo) => {
+
         //Arrange
         const numberOfPlayers = 10
+        const workerId: number = testInfo.workerIndex;
 
         //Act
-        await enrolPage.enrolMultiplePlayers(numberOfPlayers);
-        const enrolTableData = await enrolPage.getEnrolTableData();
+        await enrolPage.enrolMultiplePlayers(numberOfPlayers, workerId);
+        const enrolTableData = await enrolPage.getEnrolTableDataForWorker(workerId);
 
         await enrolPage.navigateToPaymentPage();
-        const paymentTableData = await enrolPage.getPaymentTableData();
+        const paymentTableData = await enrolPage.getPaymentTableDataForWorker(workerId);
 
         //Assert
         expect(enrolTableData.length).toEqual(paymentTableData.length);

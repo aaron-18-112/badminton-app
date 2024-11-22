@@ -30,4 +30,5 @@ export class EventInfoComponent implements OnInit {
             }
         });
     }
+
 }
