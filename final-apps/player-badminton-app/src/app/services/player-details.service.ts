@@ -8,7 +8,7 @@ import {Player} from "../models/player.model";
 })
 export class PlayerDetailsService {
 
-    private apiUrl: string = "https://localhost:7282/api/Player";
+    private apiUrl: string = "http://localhost:5089/api/Player";
 
     constructor(private http: HttpClient) {
     }
@@ -18,11 +18,10 @@ export class PlayerDetailsService {
     }
 
     createPlayer(player: Player): Observable<Player> {
-        console.log(player);
         return this.http.post<Player>(`${this.apiUrl}`, player);
     }
 
-    deletePlayer(id: {}): Observable<any> {
+    deletePlayer(id: string): Observable<any> {
         return this.http.delete<Player>(`${this.apiUrl}/${id}`);
     }
 

@@ -3,12 +3,15 @@
         <img alt="Logo" class="svg-container" src="logo-SVG.svg">
         <app-nav></app-nav>
     </div>
-    <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
+    <app-hamburger-menu
+            (toggleMenu)="toggleMenu()"
+            [menuOpen]="menuOpen">
+    </app-hamburger-menu>
     <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
         <app-event-info></app-event-info>
         <app-accordion></app-accordion>
         <div class="table-component">
-            <app-table></app-table>
+            <app-enrol-table></app-enrol-table>
         </div>
     </div>
 
