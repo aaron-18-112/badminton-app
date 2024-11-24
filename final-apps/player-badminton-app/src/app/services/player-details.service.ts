@@ -14,23 +14,23 @@ export class PlayerDetailsService {
     }
 
     getAllPlayers(): Observable<Player[]> {
-        return this.http.get<Player[]>(`${this.apiUrl}`);
+        return this.http.get<Player[]>(`${this.apiUrl}/get-all-players`);
     }
 
     createPlayer(player: Player): Observable<Player> {
-        return this.http.post<Player>(`${this.apiUrl}`, player);
+        return this.http.post<Player>(`${this.apiUrl}/create-player`, player);
     }
 
     deletePlayer(id: string): Observable<any> {
-        return this.http.delete<Player>(`${this.apiUrl}/${id}`);
+        return this.http.delete<Player>(`${this.apiUrl}/delete-players-by-id/${id}`);
     }
 
     getPlayerCount(): Observable<number> {
-        return this.http.get<number>(`${this.apiUrl}/count`);
+        return this.http.get<number>(`${this.apiUrl}/get-number-of-players`);
     }
 
     deleteAllPlayers (): Observable<any> {
-        return this.http.get<number>(`${this.apiUrl}/all`);
+        return this.http.get<number>(`${this.apiUrl}/delete-all-players`);
     }
 
 }

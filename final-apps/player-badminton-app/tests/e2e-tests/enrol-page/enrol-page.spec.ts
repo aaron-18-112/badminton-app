@@ -1,19 +1,27 @@
-import {expect, test} from '@playwright/test';
+import {expect, test, request, APIRequestContext, BrowserContext, Browser, Page} from '@playwright/test';
 import {EnrolPage} from "./page-objects/enrol-page";
 
 
 test.describe("Enrol Page", () => {
 
     let enrolPage: EnrolPage;
+    let apiRequestContext : APIRequestContext;
+    let browserContext: BrowserContext;
+    let page: Page;
 
     test.beforeEach(async ({page}) => {
         enrolPage = new EnrolPage(page);
         await enrolPage.navigateToEnrolPage();
     })
 
-    // test.afterAll(async () => {
-    //    await enrolPage.deleteAllPlayers();
-    // });
+    test.beforeAll(async ({browser}) => {
+        apiRequestContext = await request.newContext();
+        await apiRequestContext.delete("http://localhost:5089/api/Player/delete-all-players");
+
+        browserContext = await browser.newContext();
+        page = await browserContext.newPage();
+    })
+
 
     test('has title', async ({page}) => {
         await expect(page).toHaveTitle(/AJ Bell ShuttleBell/);
