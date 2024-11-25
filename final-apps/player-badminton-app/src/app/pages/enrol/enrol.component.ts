@@ -14,8 +14,13 @@ import {EventInfoComponent} from "../../components/event-info/event-info.compone
 })
 export class EnrolComponent {
     menuOpen = false;
+    playerCount = 0;
 
     toggleMenu(): void {
         this.menuOpen = !this.menuOpen;
+    }
+
+    updatePlayerCount(count: number): void {
+        this.playerCount = count;
     }
 }

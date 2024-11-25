@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from "@angular/common";
 import {PlayerDetailsService} from "../../services/player-details.service";
+import {Store} from "@ngrx/store";
 
 @Component({
     selector: 'app-enrol-form',
@@ -50,17 +51,21 @@ export class EnrolFormComponent implements OnInit {
                 lastName: this.lastName.value,
                 email: this.email.value,
             }
-            this.playerDetailsService.createPlayer(player).subscribe(() => {
-                this.formSubmit.emit();
-                this.resetForm();
-            })
+            this.formSubmit.emit(player);
+            this.resetForm();
+
+            const row = {
+                name: `${this.firstName.value} ${this.lastName.value}`,
+                email: this.email.value
+            };
+
         }
     }
 
     resetForm(): void {
         this.enrolForm.reset();
         this.isOpen = false;
-        window.location.reload()
+        // window.location.reload()
     }
 
 }

@@ -55,13 +55,11 @@ export class EnrolPage {
     async clickJoinButton() {
         await this.page.getByTestId('join-button').hover();
         await this.page.getByTestId('join-button').click();
-        await this.page.waitForTimeout(800);
     }
 
     async clickSubmitButton() {
         await this.page.getByTestId('submit-button').hover();
         await this.page.getByTestId('submit-button').click();
-        await this.page.waitForTimeout(800);
     }
 
     enrolMultiplePlayers = async (numberOfPlayers: number, workerId: number) => {
@@ -88,7 +86,6 @@ export class EnrolPage {
             const playerRow = this.page.locator(`table tr:has(td:nth-child(1):has-text("${workerId}"))`).first();
 
             await playerRow.locator('td:nth-child(2)').click();
-            await this.page.waitForTimeout(1000);
         }
     }
 

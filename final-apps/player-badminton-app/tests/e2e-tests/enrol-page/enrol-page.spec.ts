@@ -40,7 +40,6 @@ test.describe("Enrol Page", () => {
 
     test('enrol multiple players - expect correct number of players to be added', async ({page}, testInfo) => {
 
-
         //Arrange
         const numberOfPlayers = 10 //Change number of players
         const workerId: number = testInfo.workerIndex;

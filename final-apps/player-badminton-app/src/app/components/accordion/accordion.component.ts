@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {CommonModule, NgIf} from '@angular/common';
 import {EnrolFormComponent} from "../enrol-form/enrol-form.component";
 
@@ -12,11 +12,14 @@ import {EnrolFormComponent} from "../enrol-form/enrol-form.component";
 export class AccordionComponent {
     isOpen: boolean = false;
 
+    @Output() formSubmit = new EventEmitter<any>();
+
     toggleAccordion() {
         this.isOpen = !this.isOpen;
     }
 
-    handleFormSubmit($event: any): void {
+    handleFormSubmit(player: any): void {
+        this.formSubmit.emit(player);
         this.toggleAccordion();
     }
 }
