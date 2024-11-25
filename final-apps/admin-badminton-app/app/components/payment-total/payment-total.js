@@ -23,15 +23,6 @@ export function PaymentTotal() {
         }
     };
 
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            let value = amount.replace(/[^0-9.]/g, '');
-            value = parseFloat(value).toFixed(2);
-            setAmount('£' + value);
-            console.log("Total Cost:", value);
-        }
-    };
 
     return (
 
@@ -43,7 +34,6 @@ export function PaymentTotal() {
                 value={amount}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                onKeyDown={handleKeyDown}
                 placeholder="£0.00"
             />
         </section>
