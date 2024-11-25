@@ -9,7 +9,7 @@
     <tr *ngFor="let row of rows; let i = index">
         <td>{{ row.firstName }} {{ row.lastName }}</td>
         <td>
-            <input disabled name="my_checkbox" type="checkbox">
+            <input disabled name="my_checkbox" type="checkbox" [checked]="row.paid">
         </td>
     </tr>
     </tbody>

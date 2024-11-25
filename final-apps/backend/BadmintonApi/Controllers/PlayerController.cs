@@ -3,6 +3,7 @@ using BadmintonApi.Models;
 using BadmintonApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace BadmintonApi.Controllers;
 
@@ -49,6 +50,23 @@ public class PlayerController : Controller
     {
         await _mongoDBService.DeleteAllAsync();
         return NoContent();
+    }
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchAsync(string id, [FromBody] bool paid)
+    {
+        var filter = Builders<Player>.Filter.Eq(p => p.Id, id);
+    
+       
+        var update = Builders<Player>.Update.Set(p => p.paid, paid);
+    
+       
+        var result = await _mongoDBService.UpdatePlayerPaidStatus(id, paid);
+
+        
+        if (result.MatchedCount == 0)
+            return NotFound(); 
+
+        return NoContent(); 
     }
 
     

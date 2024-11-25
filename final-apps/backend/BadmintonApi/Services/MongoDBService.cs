@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 using BadmintonApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -43,6 +45,13 @@ public class MongoDBService
     {
         var filter = Builders<Player>.Filter.Empty; 
         await _playerCollection.DeleteManyAsync(filter);
+    }
+
+    public async Task<UpdateResult> UpdatePlayerPaidStatus(string playerId, bool paid)
+    {
+        var filter = Builders<Player>.Filter.Eq(p => p.Id, playerId);
+        var update = Builders<Player>.Update.Set(p => p.paid, paid);
+        return await _playerCollection.UpdateOneAsync(filter, update);
     }
 
    
