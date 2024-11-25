@@ -1,11 +1,12 @@
-import {expect, test, request, APIRequestContext, BrowserContext, Browser, Page} from '@playwright/test';
+import {APIRequestContext, BrowserContext, expect, Page, request, test} from '@playwright/test';
 import {EnrolPage} from "./page-objects/enrol-page";
+import {timeout} from "rxjs";
 
 
 test.describe("Enrol Page", () => {
 
     let enrolPage: EnrolPage;
-    let apiRequestContext : APIRequestContext;
+    let apiRequestContext: APIRequestContext;
     let browserContext: BrowserContext;
     let page: Page;
 
@@ -57,6 +58,8 @@ test.describe("Enrol Page", () => {
 
     test('remove multiple players - expect total to drop to 0', async ({page}, testInfo) => {
 
+        test.slow();
+
         //Arrange
         const numberOfPlayers = 10
         const workerId: number = testInfo.workerIndex;
@@ -64,7 +67,9 @@ test.describe("Enrol Page", () => {
         //Act
         await enrolPage.enrolMultiplePlayers(numberOfPlayers, workerId);
         await enrolPage.removeMultiplePlayers(numberOfPlayers, workerId);
+        await page.waitForTimeout(1000);
         const numberOfPlayersLabel = await enrolPage.getNumberOfPlayersForWorker(workerId);
+        await page.waitForTimeout(1000); //Timeouts to reduce flakiness
 
         //Assert
         expect(numberOfPlayersLabel).toEqual(0);

@@ -33,7 +33,7 @@ export class EnrolPage {
     }
 
     async tableOutput() {
-        const players =  await this.page.locator('table td:first-child').allInnerTexts();
+        const players = await this.page.locator('table td:first-child').allInnerTexts();
         return players.find(player => player === "Test User");
     }
 
@@ -42,7 +42,7 @@ export class EnrolPage {
         await this.page.getByLabel('First Name:').fill(firstName);
     }
 
-    async enterLastName(lastName: string , workerId: number) {
+    async enterLastName(lastName: string, workerId: number) {
         await this.page.getByLabel('Last Name:').click();
         await this.page.getByLabel('Last Name:').fill(lastName + " " + workerId);
     }
@@ -71,9 +71,9 @@ export class EnrolPage {
             await this.clickSubmitButton();
         }
     }
-    
+
     async getNumberOfPlayersForWorker(workerId: number): Promise<any> {
-        const players =  await this.page.locator('table td:first-child').allInnerTexts();
+        const players = await this.page.locator('table td:first-child').allInnerTexts();
         const playersFilteredByWorkerId = players.filter(player => player.includes(String(workerId)));
 
         return playersFilteredByWorkerId.length;

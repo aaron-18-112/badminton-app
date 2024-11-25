@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-    title: "AJ Bell ShuttleBell",
+    title: "AJ Bell ShuttleBell - Admin",
     description: "App to manage your badminton sessions",
 };
 

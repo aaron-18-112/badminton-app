@@ -3,6 +3,7 @@ using BadmintonApi.Models;
 using BadmintonApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace BadmintonApi.Controllers;
 
@@ -17,12 +18,12 @@ public class PlayerController : Controller
         _mongoDBService = mongoDBService;
     }
 
-    [HttpGet ("get-all-players")]
+    [HttpGet("get-all-players")]
     public async Task<List<Player>> Get()
     {
         return await _mongoDBService.GetAsync();
     }
-    
+
     [HttpGet("get-number-of-players")]
     public async Task<IActionResult> GetPlayerCount()
     {
@@ -30,14 +31,14 @@ public class PlayerController : Controller
         return Ok(count);
     }
 
-    [HttpPost ("create-player")]
+    [HttpPost("create-player")]
     public async Task<IActionResult> Post([FromBody] Player player)
     {
         await _mongoDBService.CreateAsync(player);
-        return CreatedAtAction(nameof(Get), new { id = player.Id }, player);
+        return CreatedAtAction(nameof(Get), new { id = player.id }, player);
     }
 
-    [HttpDelete("delete-players-by-id/{id}")]
+    [HttpDelete("delete-player-by-id/{id}")]
     public async Task<IActionResult> Delete(string id)
     {
         await _mongoDBService.DeleteAsync(id);
@@ -51,5 +52,13 @@ public class PlayerController : Controller
         return NoContent();
     }
 
-    
+    [HttpPatch("update-player-payment-status/{id}")]
+    public async Task<IActionResult> PatchAsync(string id, [FromBody] bool paid)
+    {
+        var filter = Builders<Player>.Filter.Eq(player => player.id, id);
+        var update = Builders<Player>.Update.Set(player => player.paid, paid);
+        var result = await _mongoDBService.UpdatePlayerPaymentStatus(id, paid);
+        if (result.MatchedCount == 0) return NotFound();
+        return NoContent();
+    }
 }
