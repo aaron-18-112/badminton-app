@@ -1,11 +1,12 @@
-import {expect, test, request, APIRequestContext, BrowserContext, Browser, Page} from '@playwright/test';
+import {APIRequestContext, BrowserContext, expect, Page, request, test} from '@playwright/test';
 import {EnrolPage} from "./page-objects/enrol-page";
+import {timeout} from "rxjs";
 
 
 test.describe("Enrol Page", () => {
 
     let enrolPage: EnrolPage;
-    let apiRequestContext : APIRequestContext;
+    let apiRequestContext: APIRequestContext;
     let browserContext: BrowserContext;
     let page: Page;
 
@@ -64,7 +65,9 @@ test.describe("Enrol Page", () => {
         //Act
         await enrolPage.enrolMultiplePlayers(numberOfPlayers, workerId);
         await enrolPage.removeMultiplePlayers(numberOfPlayers, workerId);
+        timeout(1000);
         const numberOfPlayersLabel = await enrolPage.getNumberOfPlayersForWorker(workerId);
+        timeout(1000);
 
         //Assert
         expect(numberOfPlayersLabel).toEqual(0);

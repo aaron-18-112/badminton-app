@@ -9,7 +9,7 @@ import {PlayerDetailsService} from "../../services/player-details.service";
     templateUrl: `event-info.component.html`,
     styleUrls: [`event-info.component.css`]
 })
-export class EventInfoComponent implements OnInit {
+export class EventInfoComponent implements OnInit{
 
     @Input() playerCount: number = 0;
 
