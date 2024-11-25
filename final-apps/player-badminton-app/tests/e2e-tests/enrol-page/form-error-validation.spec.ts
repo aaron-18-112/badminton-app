@@ -13,7 +13,7 @@ test.describe("Enrol Form Error Validation", () => {
 
     test('error should show when first name is empty', async ({page}) => {
         //Arrange
-        await enrolPage.saveWithNoFirstName();
+        await enrolPage.saveWithNoFirstName(0);
 
         //Act
         const errorMessage = await enrolPage.getFirstNameError();
@@ -37,7 +37,7 @@ test.describe("Enrol Form Error Validation", () => {
 
     test('error should show when email address is empty', async ({page}) => {
         //Arrange
-        await enrolPage.saveWithNoEmail();
+        await enrolPage.saveWithNoEmail(0);
 
         //Act
         const errorMessage = await enrolPage.getNoEmailError()
@@ -49,7 +49,7 @@ test.describe("Enrol Form Error Validation", () => {
 
     test('error should show when email address is invalid', async ({page}) => {
         //Arrange
-        await enrolPage.saveWithInvalidEmail();
+        await enrolPage.saveWithInvalidEmail(0);
 
         //Act
         const errorMessage = await enrolPage.getInvalidEmailError()

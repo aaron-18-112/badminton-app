@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DateAndTimeComponent} from "../date-and-time/date-and-time.component";
 import {PlayerDetailsService} from "../../services/player-details.service";
 
@@ -9,9 +9,9 @@ import {PlayerDetailsService} from "../../services/player-details.service";
     templateUrl: `event-info.component.html`,
     styleUrls: [`event-info.component.css`]
 })
-export class EventInfoComponent implements OnInit {
+export class EventInfoComponent implements OnInit{
 
-    playerCount: number = 0;
+    @Input() playerCount: number = 0;
 
     constructor(private playerDetailsService: PlayerDetailsService) {
     }
@@ -30,4 +30,5 @@ export class EventInfoComponent implements OnInit {
             }
         });
     }
+
 }

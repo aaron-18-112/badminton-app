@@ -22,6 +22,11 @@ public class MongoDBService
         return await _playerCollection.Find(new BsonDocument()).ToListAsync();
     }
 
+    public async Task<long> GetPlayerCountAsync()
+    {
+        return await _playerCollection.CountDocumentsAsync(new BsonDocument());
+    }
+
     public async Task CreateAsync(Player player)
     {
         await _playerCollection.InsertOneAsync(player);
@@ -30,12 +35,20 @@ public class MongoDBService
     public async Task DeleteAsync(string id)
     {
         var objectId = ObjectId.Parse(id);
-        FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(player => player.Id, objectId.ToString());
+        FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(player => player.id, objectId.ToString());
         await _playerCollection.DeleteOneAsync(filter);
     }
 
-    public async Task<long> GetPlayerCountAsync()
+    public async Task DeleteAllAsync()
     {
-        return await _playerCollection.CountDocumentsAsync(new BsonDocument());
+        var filter = Builders<Player>.Filter.Empty;
+        await _playerCollection.DeleteManyAsync(filter);
+    }
+
+    public async Task<UpdateResult> UpdatePlayerPaymentStatus(string playerId, bool paid)
+    {
+        var filter = Builders<Player>.Filter.Eq(player => player.id, playerId);
+        var update = Builders<Player>.Update.Set(player => player.paid, paid);
+        return await _playerCollection.UpdateOneAsync(filter, update);
     }
 }

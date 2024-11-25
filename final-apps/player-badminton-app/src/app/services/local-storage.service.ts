@@ -1,5 +1,4 @@
 // import {Injectable} from '@angular/core';
-// import {RowModel} from "../models/row.model";
 //
 // @Injectable({
 //     providedIn: 'root'
@@ -32,7 +31,7 @@
 //         }
 //         return [];
 //     }
-//
+
 //     private isBrowser(): boolean {
 //         return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 //     }

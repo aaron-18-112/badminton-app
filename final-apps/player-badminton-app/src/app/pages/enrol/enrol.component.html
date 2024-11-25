@@ -8,10 +8,10 @@
             [menuOpen]="menuOpen">
     </app-hamburger-menu>
     <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
-        <app-event-info></app-event-info>
-        <app-accordion></app-accordion>
+        <app-event-info [playerCount]="playerCount"></app-event-info>
+        <app-accordion (formSubmit)="enrolTable.addRow($event)"></app-accordion>
         <div class="table-component">
-            <app-enrol-table></app-enrol-table>
+            <app-enrol-table #enrolTable (rowCountChange)="updatePlayerCount($event)"></app-enrol-table>
         </div>
     </div>
 
