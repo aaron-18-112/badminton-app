@@ -1,5 +1,5 @@
 // import {Injectable} from '@angular/core';
-// import {Row} from "./row";
+// import {RowModel} from "./row";
 //
 // @Injectable({
 //   providedIn: 'root'
@@ -23,7 +23,7 @@
 //     return null;
 //   }
 //
-//   loadRows(): Row[] {
+//   loadRows(): RowModel[] {
 //     if (this.isBrowser()) {
 //       const savedRows = sessionStorage.getItem('rows');
 //       if (savedRows) {

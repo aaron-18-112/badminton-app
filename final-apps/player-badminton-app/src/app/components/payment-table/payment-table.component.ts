@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgStyle} from "@angular/common";
-import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
-
+import {PlayerDetailsService} from "../../services/player-details.service";
+import {Player} from "../../models/player.model";
 
 @Component({
     selector: 'app-payment-table',
@@ -12,13 +11,25 @@ import {LocalStorageService} from "../../local-storage.service";
     styleUrls: ['payment-table.component.css']
 })
 export class PaymentTableComponent implements OnInit {
-    rows: Row[] = [];
 
-    constructor(private localStorageService: LocalStorageService) {
+    rows: Player[] = [];
+
+    constructor(private playerDetailsService: PlayerDetailsService) {
     }
 
     ngOnInit(): void {
-        this.rows = this.localStorageService.loadRows();
+        this.loadPlayers();
+    }
+
+    loadPlayers(): void {
+        this.playerDetailsService.getAllPlayers().subscribe({
+            next: (players) => {
+                this.rows = players;
+            },
+            error: (err) => {
+                console.error('Error fetching players:', err);
+            },
+        });
     }
 
 }

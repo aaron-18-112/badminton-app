@@ -3,12 +3,15 @@
         <img alt="Logo" class="svg-container" src="logo-SVG.svg">
         <app-nav></app-nav>
     </div>
-    <app-hamburger-menu (toggleMenu)="toggleMenu()" [menuOpen]="menuOpen"></app-hamburger-menu>
+    <app-hamburger-menu
+            (toggleMenu)="toggleMenu()"
+            [menuOpen]="menuOpen">
+    </app-hamburger-menu>
     <div [ngClass]="{'menu-open': menuOpen}" class="content-container">
-        <app-event-info></app-event-info>
-        <app-accordion (addRow)="handleRowAddition($event)" [rows]="rows"></app-accordion>
+        <app-event-info [playerCount]="playerCount"></app-event-info>
+        <app-accordion (formSubmit)="enrolTable.addRow($event)"></app-accordion>
         <div class="table-component">
-            <app-table (removeRow)="handleRowRemoval($event)" [rows]="rows"></app-table>
+            <app-enrol-table #enrolTable (rowCountChange)="updatePlayerCount($event)"></app-enrol-table>
         </div>
     </div>
 

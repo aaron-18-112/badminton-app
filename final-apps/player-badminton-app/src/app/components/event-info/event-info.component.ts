@@ -1,8 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DateAndTimeComponent} from "../date-and-time/date-and-time.component";
-import {Row} from "../../row";
-import {LocalStorageService} from "../../local-storage.service";
-
+import {PlayerDetailsService} from "../../services/player-details.service";
 
 @Component({
     selector: 'app-event-info',
@@ -11,16 +9,26 @@ import {LocalStorageService} from "../../local-storage.service";
     templateUrl: `event-info.component.html`,
     styleUrls: [`event-info.component.css`]
 })
-export class EventInfoComponent {
+export class EventInfoComponent implements OnInit {
 
-    @Input() rows: Row[] = [];
+    @Input() playerCount: number = 0;
 
-    constructor(private localStorageService: LocalStorageService) {
+    constructor(private playerDetailsService: PlayerDetailsService) {
     }
 
-    get rowCount(): number {
-        return this.localStorageService.getItem('rowCount') ?? 0;
+    ngOnInit() {
+        this.getPlayerCount()
     }
 
+    getPlayerCount() {
+        this.playerDetailsService.getPlayerCount().subscribe({
+            next: (count: number) => {
+                this.playerCount = count;
+            },
+            error: (err) => {
+                console.error('Error fetching player count:', err);
+            }
+        });
+    }
 
 }

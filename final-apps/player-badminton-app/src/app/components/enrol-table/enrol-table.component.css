@@ -72,13 +72,11 @@ thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.1s ease, border-color 0.1s ease;
 }
 
 #remove-button:hover {
     background-color: transparent;
     border: solid 2px #d50032;
-    transition: background-color 0.1s ease-in, border 0.1s ease-in;
 }
 
 .bin-icon {
